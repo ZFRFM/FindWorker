@@ -39,6 +39,7 @@ android {
 }
 
 dependencies {
+    implementation(project(path = ":screen:auth"))
     implementation(project(path = ":screen:search"))
     implementation(project(path = ":screen:favourites"))
     implementation(project(path = ":screen:responses"))

@@ -21,3 +21,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "HeadHunter"
 include(":app")
+include(":screen:search")
+include(":screen:favourites")
+include(":screen:responses")
+include(":screen:messages")
+include(":screen:profile")

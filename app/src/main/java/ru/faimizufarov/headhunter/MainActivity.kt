@@ -3,7 +3,12 @@ package ru.faimizufarov.headhunter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import ru.faimizufarov.favourites.FavouritesFragment
 import ru.faimizufarov.headhunter.databinding.ActivityMainBinding
+import ru.faimizufarov.messages.MessagesFragment
+import ru.faimizufarov.profile.ProfileFragment
+import ru.faimizufarov.responses.ResponsesFragment
+import ru.faimizufarov.search.SearchFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -16,11 +21,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.action_search -> setCurrentFragment()
-                R.id.action_favourites -> setCurrentFragment()
-                R.id.action_responses -> setCurrentFragment()
-                R.id.action_messages -> setCurrentFragment()
-                R.id.action_profile -> setCurrentFragment()
+                R.id.action_search -> setCurrentFragment(SearchFragment.newInstance())
+                R.id.action_favourites -> setCurrentFragment(FavouritesFragment.newInstance())
+                R.id.action_responses -> setCurrentFragment(ResponsesFragment.newInstance())
+                R.id.action_messages -> setCurrentFragment(MessagesFragment.newInstance())
+                R.id.action_profile -> setCurrentFragment(ProfileFragment.newInstance())
             }
             true
         }

@@ -9,6 +9,12 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/screen" />
+            <option value="$PROJECT_DIR$/screen/favourites" />
+            <option value="$PROJECT_DIR$/screen/messages" />
+            <option value="$PROJECT_DIR$/screen/profile" />
+            <option value="$PROJECT_DIR$/screen/responses" />
+            <option value="$PROJECT_DIR$/screen/search" />
           </set>
         </option>
         <option name="resolveExternalAnnotations" value="false" />

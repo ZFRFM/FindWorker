@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/action_search"
+        android:orderInCategory="100"
+        android:icon="@drawable/action_search"
+        android:title="@string/action_search"
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_favourites"
+        android:orderInCategory="100"
+        android:icon="@drawable/action_favourites"
+        android:title="@string/action_favourites"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_responses"
+        android:orderInCategory="100"
+        android:icon="@drawable/action_responses"
+        android:title="@string/action_responses"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_messages"
+        android:orderInCategory="100"
+        android:icon="@drawable/action_messages"
+        android:title="@string/action_messages"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_profile"
+        android:orderInCategory="100"
+        android:icon="@drawable/action_profile"
+        android:title="@string/action_profile"
+        app:showAsAction="ifRoom" />
+
+</menu>

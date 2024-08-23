@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">HeadHunter</string>
+    <string name="action_search">Поиск</string>
+    <string name="action_favourites">Избранное</string>
+    <string name="action_responses">Отклики</string>
+    <string name="action_messages">Сообщения</string>
+    <string name="action_profile">Профиль</string>
 </resources>

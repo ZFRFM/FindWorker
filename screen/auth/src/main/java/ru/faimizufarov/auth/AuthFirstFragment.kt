@@ -9,9 +9,9 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.lifecycle.ViewModelProvider
 import com.jakewharton.rxbinding4.widget.textChanges
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import ru.faimizufarov.authorization.R
@@ -21,12 +21,13 @@ class AuthFirstFragment : Fragment() {
     private lateinit var binding: FragmentAuthFirstBinding
 
     private val disposables = CompositeDisposable()
-    private val authSharedViewModel: AuthSharedViewModel by viewModels()
+    private lateinit var authSharedViewModel: AuthSharedViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        authSharedViewModel = ViewModelProvider(requireActivity())[AuthSharedViewModel::class.java]
         binding = FragmentAuthFirstBinding.inflate(layoutInflater, container, false)
         return binding.root
     }

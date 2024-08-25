@@ -1,15 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AuthFirstFragment">
+    android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:text="@string/auth_fragment" />
+        android:id="@+id/loginToPersonalAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_to_personal_account"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sf_pro_display_regular"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/findWorkLinearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/login_linear_layout_background"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toBottomOf="@id/loginToPersonalAccount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/findWorkerLinearLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/work_search"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:textSize="16sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_edit_text_backgoround"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email_or_phone"
+            android:textColor="@color/white"
+            android:textColorHint="@color/grey_4"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:drawableStart="@drawable/search_work_edit_text"
+            android:drawablePadding="12dp"
+            android:paddingStart="12dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:layout_margin="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="28dp">
+
+            <Button
+                android:id="@+id/continueButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/continue_str"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:layout_weight="6"
+                android:background="@drawable/continue_button_background"
+                android:paddingHorizontal="40dp" />
+
+            <Button
+                android:id="@+id/loginWithPasswordButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="@string/password_entry"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/sf_pro_display_semibold"
+                android:layout_weight="2"
+                android:textAllCaps="false"
+                android:layout_marginStart="16dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/findWorkerLinearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/login_linear_layout_background"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/findWorkLinearLayout"
+        app:layout_constraintStart_toStartOf="@id/findWorkLinearLayout"
+        app:layout_constraintEnd_toEndOf="@id/findWorkLinearLayout"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/worker_search"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:textSize="16sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/vacancy_holding"
+            android:textColor="@color/white"
+            android:fontFamily="@font/sf_pro_display_regular"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp" />
+
+        <Button
+            android:id="@+id/findWorkersButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/find_worker_button_background"
+            android:text="@string/i_search_workers"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="28dp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

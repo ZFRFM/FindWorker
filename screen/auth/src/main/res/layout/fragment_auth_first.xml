@@ -42,22 +42,31 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp" />
 
-        <EditText
-            android:id="@+id/emailEditText"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/login_edit_text_backgoround"
-            android:inputType="textEmailAddress"
-            android:hint="@string/email_or_phone"
-            android:textColor="@color/white"
-            android:textColorHint="@color/grey_4"
-            android:fontFamily="@font/sf_pro_display_regular"
-            android:drawableStart="@drawable/action_responses"
-            android:drawablePadding="12dp"
-            android:paddingStart="12dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:layout_margin="16dp" />
+            android:layout_height="match_parent"
+            app:boxBackgroundMode="outline"
+            app:hintTextColor="@color/grey_4"
+            app:hintEnabled="false"
+            android:layout_margin="16dp" >
+
+            <EditText
+                android:id="@+id/emailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_edit_text_background"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email"
+                android:textColor="@color/white"
+                android:textColorHint="@color/grey_4"
+                android:fontFamily="@font/sf_pro_display_regular"
+                android:drawableStart="@drawable/action_responses"
+                android:drawablePadding="12dp"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,12 +80,13 @@
                 android:id="@+id/continueButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:text="@string/continue_str"
                 android:textColor="@android:color/white"
                 android:textAllCaps="false"
                 android:fontFamily="@font/sf_pro_display_regular"
                 android:layout_weight="6"
-                android:background="@drawable/continue_button_background"
+                android:background="@drawable/continue_button_not_enabled_background"
                 android:paddingHorizontal="40dp" />
 
             <Button

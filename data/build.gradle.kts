@@ -34,6 +34,13 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     //endregion
 
+    //region Retrofit
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.adapter.rxjava3)
+    implementation(libs.retrofit)
+    implementation(libs.okhttp)
+    //endregion
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

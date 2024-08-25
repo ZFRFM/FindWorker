@@ -3,6 +3,8 @@ package ru.faimizufarov.headhunter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import ru.faimizufarov.auth.AuthFirstFragment
+import ru.faimizufarov.auth.AuthSecondFragment
 import ru.faimizufarov.favourites.FavouritesFragment
 import ru.faimizufarov.headhunter.databinding.ActivityMainBinding
 import ru.faimizufarov.messages.MessagesFragment
@@ -34,12 +36,24 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        listenerForNavigationToAuthSecondFragment()
+    }
+
+    private fun listenerForNavigationToAuthSecondFragment() {
+        supportFragmentManager.setFragmentResultListener(
+            AuthFirstFragment.NAVIGATE_TO_AUTH_SECOND_FRAGMENT_RESULT, this
+        ) { _, bundle ->
+            val result = bundle.getBoolean(AuthFirstFragment.NAVIGATE_TO_AUTH_SECOND_FRAGMENT)
+            if (result) {
+                setCurrentFragment(AuthSecondFragment.newInstance())
+            }
+        }
     }
 
     private fun setCurrentFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragmentContainerView, fragment)
-            commit()
-        }
+        }.commit()
     }
 }

@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import com.jakewharton.rxbinding4.widget.textChanges
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import ru.faimizufarov.authorization.R
@@ -73,7 +74,12 @@ class AuthFirstFragment : Fragment() {
         if (binding.emailEditText.text.endsWith("@mail.ru") ||
             binding.emailEditText.text.endsWith("@gmail.com")
         ) {
-            //FIXME: navigate
+            val navigateToAuthSecondFragment =
+                bundleOf(NAVIGATE_TO_AUTH_SECOND_FRAGMENT to true)
+            parentFragmentManager.setFragmentResult(
+                NAVIGATE_TO_AUTH_SECOND_FRAGMENT_RESULT,
+                navigateToAuthSecondFragment
+            )
         } else {
             binding.emailInputLayout.error = getString(R.string.incorrect_email)
             binding.emailInputLayout.isErrorEnabled = true
@@ -144,5 +150,10 @@ class AuthFirstFragment : Fragment() {
             }
             false
         }
+    }
+
+    companion object {
+        const val NAVIGATE_TO_AUTH_SECOND_FRAGMENT = "NAVIGATE_TO_AUTH_SECOND_FRAGMENT"
+        const val NAVIGATE_TO_AUTH_SECOND_FRAGMENT_RESULT = "NAVIGATE_TO_AUTH_SECOND_FRAGMENT_RESULT"
     }
 }

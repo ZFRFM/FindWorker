@@ -8,4 +8,6 @@
     <string name="vacancy_holding">Размещение вакансий и доступ к базе резюме</string>
     <string name="i_search_workers">Я ищу сотрудников</string>
     <string name="incorrect_email">Вы ввели неверный e-mail</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

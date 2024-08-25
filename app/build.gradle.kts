@@ -47,6 +47,7 @@ dependencies {
     implementation(project(path = ":screen:profile"))
     implementation(project(path = ":core"))
 
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

@@ -41,6 +41,11 @@ dependencies {
     implementation(libs.okhttp)
     //endregion
 
+    //region Coroutine
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
+    //endregion
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
@@ -37,6 +39,7 @@ class AuthFirstFragment : Fragment() {
         checkEmailEditTextDrawableVisibility()
         setAuthData()
         observeViewModel()
+        clickOkOnKeyboard()
 
         binding.continueButton.setOnClickListener {
             clickContinueButton()
@@ -87,6 +90,18 @@ class AuthFirstFragment : Fragment() {
             binding.emailEditText.background =
                 resources.getDrawable(R.drawable.login_edit_text_stroke_background)
             binding.emailEditText.setPadding(12,32,12,32)
+        }
+    }
+
+    private fun clickOkOnKeyboard() {
+        binding.emailEditText.setOnEditorActionListener { _, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE ||
+                (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER)) {
+                clickContinueButton()
+                true
+            } else {
+                false
+            }
         }
     }
 

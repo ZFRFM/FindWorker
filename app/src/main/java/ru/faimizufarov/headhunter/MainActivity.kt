@@ -1,6 +1,7 @@
 package ru.faimizufarov.headhunter
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import ru.faimizufarov.auth.AuthFirstFragment
@@ -14,17 +15,13 @@ import ru.faimizufarov.search.SearchFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavView.selectedItemId = R.id.action_search
-
-        //FIXME: Деактивировать при вводе второго фрагмента авторизации
-        for (i in 0 until binding.bottomNavView.menu.size()) {
-            binding.bottomNavView.menu.getItem(i).isEnabled = false
-        }
 
         binding.bottomNavView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -37,7 +34,17 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        observeBottomNavViewAvailability()
         listenerForNavigationToAuthSecondFragment()
+        listenerForNavigationToSearchFragment()
+    }
+
+    private fun observeBottomNavViewAvailability() {
+        mainViewModel.isBottomNavViewEnabled.observe(this) { isEnabled ->
+            for (i in 0 until binding.bottomNavView.menu.size()) {
+                binding.bottomNavView.menu.getItem(i).isEnabled = isEnabled
+            }
+        }
     }
 
     private fun listenerForNavigationToAuthSecondFragment() {
@@ -48,6 +55,18 @@ class MainActivity : AppCompatActivity() {
             if (result) {
                 setCurrentFragment(AuthSecondFragment.newInstance())
             }
+        }
+    }
+
+    private fun listenerForNavigationToSearchFragment() {
+        supportFragmentManager.setFragmentResultListener(
+            AuthSecondFragment.NAVIGATE_TO_SEARCH_FRAGMENT_RESULT, this
+        ) { _, bundle ->
+            val result = bundle.getBoolean(AuthSecondFragment.NAVIGATE_TO_SEARCH_FRAGMENT)
+            if (result) {
+                setCurrentFragment(SearchFragment.newInstance())
+            }
+            mainViewModel.setBottomNavViewAvailability(true)
         }
     }
 

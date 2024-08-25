@@ -58,6 +58,7 @@
                 android:background="@drawable/login_edit_text_background"
                 android:inputType="textEmailAddress"
                 android:hint="@string/email"
+                android:imeOptions="actionDone"
                 android:textColor="@color/white"
                 android:textColorHint="@color/grey_4"
                 android:fontFamily="@font/sf_pro_display_regular"

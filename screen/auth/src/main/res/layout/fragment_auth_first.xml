@@ -86,7 +86,7 @@
                 android:textAllCaps="false"
                 android:fontFamily="@font/sf_pro_display_regular"
                 android:layout_weight="6"
-                android:background="@drawable/continue_button_not_enabled_background"
+                android:background="@drawable/button_not_enabled_background"
                 android:paddingHorizontal="40dp" />
 
             <Button

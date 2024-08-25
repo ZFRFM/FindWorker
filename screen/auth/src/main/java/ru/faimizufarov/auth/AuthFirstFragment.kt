@@ -53,11 +53,11 @@ class AuthFirstFragment : Fragment() {
                 binding.continueButton.isEnabled = isEnabled
                 if (isEnabled) {
                     binding.continueButton.setBackgroundDrawable(
-                        resources.getDrawable(R.drawable.continue_button_enabled_background)
+                        resources.getDrawable(R.drawable.button_enabled_background)
                     )
                 } else {
                     binding.continueButton.setBackgroundDrawable(
-                        resources.getDrawable(R.drawable.continue_button_not_enabled_background)
+                        resources.getDrawable(R.drawable.button_not_enabled_background)
                     )
                 }
             }

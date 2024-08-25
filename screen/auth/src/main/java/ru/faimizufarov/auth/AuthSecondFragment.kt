@@ -69,7 +69,7 @@ class AuthSecondFragment : Fragment() {
 
             if (isEnabled) {
                 binding.confirmButton.setBackgroundDrawable(
-                    resources.getDrawable(R.drawable.button_enabled_background)
+                    resources.getDrawable(ru.faimizufarov.core.R.drawable.button_enabled_background)
                 )
             } else {
                 binding.confirmButton.setBackgroundDrawable(

@@ -57,7 +57,9 @@ class AuthFirstFragment : Fragment() {
                 binding.continueButton.isEnabled = isEnabled
                 if (isEnabled) {
                     binding.continueButton.setBackgroundDrawable(
-                        resources.getDrawable(R.drawable.button_enabled_background)
+                        resources.getDrawable(
+                            ru.faimizufarov.core.R.drawable.button_enabled_background
+                        )
                     )
                 } else {
                     binding.continueButton.setBackgroundDrawable(
@@ -126,7 +128,7 @@ class AuthFirstFragment : Fragment() {
                 binding.emailInputLayout.error = null
                 binding.emailInputLayout.isErrorEnabled = false
                 binding.emailEditText.background =
-                    resources.getDrawable(R.drawable.login_edit_text_background)
+                    resources.getDrawable(ru.faimizufarov.core.R.drawable.edit_text_background)
                 binding.emailEditText.setPadding(12,32,12,32)
 
                 val clearIcon = if (inputText.isNullOrEmpty()) {

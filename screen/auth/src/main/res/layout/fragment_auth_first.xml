@@ -52,7 +52,7 @@
             android:textColor="@color/white"
             android:textColorHint="@color/grey_4"
             android:fontFamily="@font/sf_pro_display_regular"
-            android:drawableStart="@drawable/search_work_edit_text"
+            android:drawableStart="@drawable/action_responses"
             android:drawablePadding="12dp"
             android:paddingStart="12dp"
             android:paddingTop="16dp"

@@ -19,6 +19,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.bottomNavView.selectedItemId = R.id.action_search
 
+        //FIXME: Деактивировать при вводе второго фрагмента авторизации
+        for (i in 0 until binding.bottomNavView.menu.size()) {
+            binding.bottomNavView.menu.getItem(i).isEnabled = false
+        }
+
         binding.bottomNavView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.action_search -> setCurrentFragment(SearchFragment.newInstance())

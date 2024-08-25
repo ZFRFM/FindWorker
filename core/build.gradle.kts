@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.faimizufarov.authorization"
+    namespace = "ru.faimizufarov.core"
     compileSdk = 34
 
     defaultConfig {
@@ -25,13 +25,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-    implementation(project(path = ":core"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

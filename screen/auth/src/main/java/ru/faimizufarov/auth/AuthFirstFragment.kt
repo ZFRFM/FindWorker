@@ -31,7 +31,10 @@ class AuthFirstFragment : Fragment() {
         binding.emailEditText.addTextChangedListener( object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val icon = if (s.isNullOrEmpty()) {
-                    ContextCompat.getDrawable(requireContext(), R.drawable.search_work_edit_text)
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        ru.faimizufarov.core.R.drawable.action_responses
+                    )
                 } else {
                     null
                 }

@@ -45,6 +45,7 @@ dependencies {
     implementation(project(path = ":screen:responses"))
     implementation(project(path = ":screen:messages"))
     implementation(project(path = ":screen:profile"))
+    implementation(project(path = ":core"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

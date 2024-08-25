@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlinx-serialization")
 }
 
 android {
@@ -28,6 +29,10 @@ android {
 }
 
 dependencies {
+
+    //region Kotlin Serialization
+    implementation(libs.kotlinx.serialization.json)
+    //endregion
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

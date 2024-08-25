@@ -1,5 +1,8 @@
 package ru.faimizufarov.data.models
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Vacancy(
     val id: String,
     val lookingNumber: Int,

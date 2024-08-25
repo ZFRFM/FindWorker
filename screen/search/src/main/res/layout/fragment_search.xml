@@ -23,7 +23,7 @@
         android:id="@+id/queryEditText"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:background="@drawable/edit_text_background"
+        android:background="@drawable/grey_two_background"
         android:drawableStart="@drawable/action_search"
         android:drawablePadding="12dp"
         android:paddingStart="8dp"

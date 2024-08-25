@@ -5,11 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import ru.faimizufarov.data.network.AppApi
 import ru.faimizufarov.search.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {

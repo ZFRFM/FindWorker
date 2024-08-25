@@ -4,4 +4,6 @@
     <string name="filter">фильтры</string>
     <string name="vacancies_for_you">Вакансии для вас</string>
     <string name="more_vacancies">Еще %s вакансии</string>
+    <string name="up_cv_in_search">Поднять резюме в поиске</string>
+    <string name="up">Поднять</string>
 </resources>

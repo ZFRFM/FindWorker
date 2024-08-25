@@ -55,7 +55,7 @@
                 android:id="@+id/emailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edit_text_background"
+                android:background="@drawable/grey_two_background"
                 android:inputType="textEmailAddress"
                 android:hint="@string/email"
                 android:imeOptions="actionDone"

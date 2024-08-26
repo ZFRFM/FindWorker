@@ -1,4 +1,4 @@
-package ru.faimizufarov.headhunter
+package ru.faimizufarov.headhunter.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import ru.faimizufarov.auth.AuthFirstFragment
 import ru.faimizufarov.auth.AuthSecondFragment
 import ru.faimizufarov.favourites.FavouritesFragment
+import ru.faimizufarov.headhunter.R
 import ru.faimizufarov.headhunter.databinding.ActivityMainBinding
 import ru.faimizufarov.messages.MessagesFragment
 import ru.faimizufarov.profile.ProfileFragment

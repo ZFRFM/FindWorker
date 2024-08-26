@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlin-kapt")
 }
 
 android {
@@ -46,6 +47,13 @@ dependencies {
     implementation(project(path = ":screen:messages"))
     implementation(project(path = ":screen:profile"))
     implementation(project(path = ":core"))
+    implementation(project(path = ":data"))
+    implementation(project(path = ":domain"))
+
+    //region Dagger
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+    //endregion
 
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.core.ktx)

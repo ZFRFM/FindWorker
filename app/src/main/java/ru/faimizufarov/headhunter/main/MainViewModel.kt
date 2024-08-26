@@ -1,4 +1,4 @@
-package ru.faimizufarov.headhunter
+package ru.faimizufarov.headhunter.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

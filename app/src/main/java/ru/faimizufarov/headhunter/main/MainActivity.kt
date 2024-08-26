@@ -13,6 +13,7 @@ import ru.faimizufarov.messages.MessagesFragment
 import ru.faimizufarov.profile.ProfileFragment
 import ru.faimizufarov.responses.ResponsesFragment
 import ru.faimizufarov.search.ui.SearchFragment
+import ru.faimizufarov.vacancy_page.ui.VacancyPageFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         observeBottomNavViewAvailability()
         listenerForNavigationToAuthSecondFragment()
         listenerForNavigationToSearchFragment()
+        listenerForNavigationToVacancyPageFragment()
     }
 
     private fun observeBottomNavViewAvailability() {
@@ -68,6 +70,19 @@ class MainActivity : AppCompatActivity() {
                 setCurrentFragment(SearchFragment.newInstance())
             }
             mainViewModel.setBottomNavViewAvailability(true)
+        }
+    }
+
+    private fun listenerForNavigationToVacancyPageFragment() {
+        supportFragmentManager.setFragmentResultListener(
+            SearchFragment.VACANCY_ID_AND_NAVIGATE_RESULT, this
+        ) { _, bundle ->
+            val vacancyId = bundle.getString(SearchFragment.VACANCY_ID)
+                ?: error("vacancyId was not accepted")
+            val result = bundle.getBoolean(SearchFragment.NAVIGATE_TO_VACANCY_PAGE_FRAGMENT)
+            if (result) {
+                setCurrentFragment(VacancyPageFragment.newInstance(vacancyId))
+            }
         }
     }
 

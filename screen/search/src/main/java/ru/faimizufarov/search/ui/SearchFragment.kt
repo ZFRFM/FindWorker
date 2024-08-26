@@ -9,7 +9,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
 import ru.faimizufarov.domain.models.Offer
 import ru.faimizufarov.domain.models.Result
@@ -130,7 +131,11 @@ class SearchFragment : Fragment() {
     }
 
     private fun updateVacancyFeed(vacancy: Vacancy) {
-        Toast.makeText(requireContext(), "clicked ${vacancy.title}", Toast.LENGTH_SHORT).show()
+        val vacancyIdBundle = bundleOf(
+            VACANCY_ID to vacancy.id,
+            NAVIGATE_TO_VACANCY_PAGE_FRAGMENT to true
+        )
+        setFragmentResult(VACANCY_ID_AND_NAVIGATE_RESULT, vacancyIdBundle)
     }
 
     private fun correctVacancyEnding(result: Result) {
@@ -144,5 +149,9 @@ class SearchFragment : Fragment() {
 
     companion object {
         fun newInstance() = SearchFragment()
+
+        const val NAVIGATE_TO_VACANCY_PAGE_FRAGMENT = "NAVIGATE_TO_VACANCY_PAGE_FRAGMENT"
+        const val VACANCY_ID = "VACANCY_ID"
+        const val VACANCY_ID_AND_NAVIGATE_RESULT = "VACANCY_ID_AND_NAVIGATE_RESULT"
     }
 }

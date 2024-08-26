@@ -5,12 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import ru.faimizufarov.search.databinding.FragmentVacancyPageBinding
 import ru.faimizufarov.vacancy_page.di.VacancyPageComponentProvider
 import javax.inject.Inject
 
-class VacancyPageFragment : Fragment() {
+class VacancyPageFragment(private val id: String) : Fragment() {
     private lateinit var binding: FragmentVacancyPageBinding
 
     @Inject
@@ -40,10 +41,13 @@ class VacancyPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        vacancyPageViewModel.filterResult(id)
+        vacancyPageViewModel.vacancy.observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), it.title.toString(), Toast.LENGTH_SHORT).show()
+        }
     }
 
     companion object {
-        fun newInstance() = VacancyPageFragment()
+        fun newInstance(id: String) = VacancyPageFragment(id)
     }
 }

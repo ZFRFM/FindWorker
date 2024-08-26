@@ -128,7 +128,7 @@
     <Button
         android:id="@+id/respondButton"
         android:layout_width="0dp"
-        android:layout_height="32dp"
+        android:layout_height="44dp"
         android:background="@drawable/find_worker_button_background"
         android:text="@string/respond"
         android:textColor="@color/white"

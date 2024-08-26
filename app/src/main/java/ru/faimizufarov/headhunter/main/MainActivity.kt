@@ -1,6 +1,7 @@
 package ru.faimizufarov.headhunter.main
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -65,11 +66,11 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.setFragmentResultListener(
             AuthSecondFragment.NAVIGATE_TO_SEARCH_FRAGMENT_RESULT, this
         ) { _, bundle ->
+            mainViewModel.setBottomNavViewAvailability(true)
             val result = bundle.getBoolean(AuthSecondFragment.NAVIGATE_TO_SEARCH_FRAGMENT)
             if (result) {
                 setCurrentFragment(SearchFragment.newInstance())
             }
-            mainViewModel.setBottomNavViewAvailability(true)
         }
 
         supportFragmentManager.setFragmentResultListener(

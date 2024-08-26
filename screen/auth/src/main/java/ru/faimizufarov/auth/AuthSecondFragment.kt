@@ -128,8 +128,8 @@ class AuthSecondFragment : Fragment() {
     companion object {
         fun newInstance() = AuthSecondFragment()
 
-        const val NAVIGATE_TO_SEARCH_FRAGMENT = "NAVIGATE_TO_SEARCH_FRAGMENT"
-        const val NAVIGATE_TO_SEARCH_FRAGMENT_RESULT = "NAVIGATE_TO_SEARCH_FRAGMENT_RESULT"
+        const val NAVIGATE_TO_SEARCH_FRAGMENT = "NAVIGATE_TO_SEARCH_FRAGMENT_FROM_AUTH_SECOND"
+        const val NAVIGATE_TO_SEARCH_FRAGMENT_RESULT = "NAVIGATE_TO_SEARCH_FRAGMENT_RESULT_FROM_AUTH_SECOND"
 
     }
 }

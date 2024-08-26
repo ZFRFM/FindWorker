@@ -141,7 +141,7 @@ class VacancyPageFragment(private val id: String) : Fragment() {
     companion object {
         fun newInstance(id: String) = VacancyPageFragment(id)
 
-        const val NAVIGATE_TO_SEARCH_FRAGMENT = "NAVIGATE_TO_SEARCH_FRAGMENT"
-        const val NAVIGATE_TO_SEARCH_FRAGMENT_RESULT = "NAVIGATE_TO_SEARCH_FRAGMENT_RESULT"
+        const val NAVIGATE_TO_SEARCH_FRAGMENT = "NAVIGATE_TO_SEARCH_FRAGMENT_FROM_VACANCY_PAGE"
+        const val NAVIGATE_TO_SEARCH_FRAGMENT_RESULT = "NAVIGATE_TO_SEARCH_FRAGMENT_RESULT_FROM_VACANCY_PAGE"
     }
 }

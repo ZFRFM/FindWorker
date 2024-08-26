@@ -1,4 +1,4 @@
-package ru.faimizufarov.data.models
+package ru.faimizufarov.domain.models
 
 import kotlinx.serialization.Serializable
 

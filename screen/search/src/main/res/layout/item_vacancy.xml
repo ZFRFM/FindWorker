@@ -3,7 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="16dp"
     android:background="@drawable/grey_two_background">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBegin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="16dp" />
 
     <TextView
         android:id="@+id/lookingNumberTextView"
@@ -12,10 +34,8 @@
         android:text="@string/looking_person_number"
         android:textColor="@color/green"
         android:fontFamily="@font/sf_pro_display_regular"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/guidelineTop"
+        app:layout_constraintStart_toStartOf="@id/guidelineBegin" />
 
     <ImageView
         android:id="@+id/vacancyFullHeartImageView"
@@ -23,10 +43,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/action_full_heart"
         android:contentDescription="@string/favourite"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintTop_toTopOf="@id/guidelineTop" />
 
     <TextView
         android:id="@+id/vacancyTitleTextView"
@@ -37,8 +55,9 @@
         android:fontFamily="@font/sf_pro_display_regular"
         android:textSize="16sp"
         android:layout_marginTop="10dp"
+        app:layout_goneMarginTop="0dp"
         app:layout_constraintTop_toBottomOf="@id/lookingNumberTextView"
-        app:layout_constraintStart_toStartOf="@id/lookingNumberTextView" />
+        app:layout_constraintStart_toStartOf="@id/guidelineBegin" />
 
     <TextView
         android:id="@+id/addressTownTextView"
@@ -49,7 +68,7 @@
         android:fontFamily="@font/sf_pro_display_regular"
         android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/vacancyTitleTextView"
-        app:layout_constraintStart_toStartOf="@id/vacancyTitleTextView" />
+        app:layout_constraintStart_toStartOf="@id/guidelineBegin" />
 
     <TextView
         android:id="@+id/companyTextView"
@@ -60,7 +79,7 @@
         android:fontFamily="@font/sf_pro_display_regular"
         android:layout_marginTop="4dp"
         app:layout_constraintTop_toBottomOf="@id/addressTownTextView"
-        app:layout_constraintStart_toStartOf="@id/addressTownTextView" />
+        app:layout_constraintStart_toStartOf="@id/guidelineBegin" />
 
     <ImageView
         android:id="@+id/confirmedCompanyImageView"
@@ -80,7 +99,7 @@
         android:src="@drawable/experience_suitcase_icon"
         android:contentDescription="@string/experience"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="@id/companyTextView"
+        app:layout_constraintStart_toStartOf="@id/guidelineBegin"
         app:layout_constraintTop_toBottomOf="@id/companyTextView" />
 
     <TextView
@@ -103,24 +122,23 @@
         android:textColor="@color/grey_3"
         android:fontFamily="@font/sf_pro_display_regular"
         android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="@id/experienceImageView"
+        app:layout_constraintStart_toStartOf="@id/guidelineBegin"
         app:layout_constraintTop_toBottomOf="@id/experienceImageView" />
 
     <Button
         android:id="@+id/respondButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:background="@drawable/find_worker_button_background"
         android:text="@string/respond"
         android:textColor="@color/white"
         android:textAllCaps="false"
         android:fontFamily="@font/sf_pro_display_regular"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintTop_toBottomOf="@id/publishedDateTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelineBegin"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

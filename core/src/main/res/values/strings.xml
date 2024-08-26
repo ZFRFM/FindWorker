@@ -5,4 +5,5 @@
     <string name="action_responses">Отклики</string>
     <string name="action_messages">Сообщения</string>
     <string name="action_profile">Профиль</string>
+    <string name="looking_person_number">Сейчас просматривает %d человек</string>
 </resources>

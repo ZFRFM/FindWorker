@@ -1,4 +1,4 @@
-package ru.faimizufarov.search
+package ru.faimizufarov.search.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

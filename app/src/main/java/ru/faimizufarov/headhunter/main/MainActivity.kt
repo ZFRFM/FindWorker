@@ -12,7 +12,7 @@ import ru.faimizufarov.headhunter.databinding.ActivityMainBinding
 import ru.faimizufarov.messages.MessagesFragment
 import ru.faimizufarov.profile.ProfileFragment
 import ru.faimizufarov.responses.ResponsesFragment
-import ru.faimizufarov.search.SearchFragment
+import ru.faimizufarov.search.ui.SearchFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

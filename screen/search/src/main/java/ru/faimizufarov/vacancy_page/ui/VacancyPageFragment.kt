@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.setFragmentResultListener
 import ru.faimizufarov.search.databinding.FragmentVacancyPageBinding
 
 class VacancyPageFragment : Fragment() {

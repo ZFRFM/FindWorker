@@ -7,13 +7,27 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import ru.faimizufarov.domain.models.Offer
 import ru.faimizufarov.search.adapter.OfferAdapter
 import ru.faimizufarov.search.databinding.FragmentSearchBinding
+import javax.inject.Inject
 
 class SearchFragment : Fragment() {
     private lateinit var binding: FragmentSearchBinding
-    private val searchViewModel: SearchViewModel by viewModels()
+
+    @Inject
+    lateinit var searchViewModelFactory: SearchViewModelFactory
+    private lateinit var searchViewModel: SearchViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        searchViewModel =
+            ViewModelProvider(
+                this,
+                searchViewModelFactory,
+            )[SearchViewModel::class]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

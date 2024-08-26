@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="vacancies_count">
+        <item quantity="one">Ещё %d вакансия</item>
+        <item quantity="few">Ещё %d вакансии</item>
+        <item quantity="many">Ещё %d вакансий</item>
+        <item quantity="other">Ещё %d вакансий</item>
+    </plurals>
+
+    <plurals name="looking_number_count">
+        <item quantity="one">Сейчас просматривает %d человек</item>
+        <item quantity="few">Сейчас просматривают %d человека</item>
+        <item quantity="many">Сейчас просматривают %d человек</item>
+        <item quantity="other">Сейчас просматривают %d человек</item>
+    </plurals>
+</resources>

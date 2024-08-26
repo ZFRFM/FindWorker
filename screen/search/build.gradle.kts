@@ -42,6 +42,10 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.9.1")
     implementation("androidx.fragment:fragment-ktx:1.8.2")
 
+    //region Kotlin Serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+    //endregion
+
     //region Dagger
     implementation("com.google.dagger:dagger:2.51.1")
     kapt("com.google.dagger:dagger-compiler:2.51.1")

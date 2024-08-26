@@ -1,8 +1,8 @@
 package ru.faimizufarov.search.adapter
 
 import android.view.View
-import androidx.core.view.marginTop
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.datetime.LocalDate
 import ru.faimizufarov.domain.models.Vacancy
 import ru.faimizufarov.search.databinding.ItemVacancyBinding
 
@@ -34,9 +34,10 @@ class VacancyViewHolder(
             }
 
             if (vacancy.lookingNumber != null) {
-                lookingNumberTextView.text = itemBinding.root.context.getString(
-                    ru.faimizufarov.core.R.string.looking_person_number,
-                    vacancy.lookingNumber
+                lookingNumberTextView.text = itemBinding.root.context.resources.getQuantityString(
+                    ru.faimizufarov.core.R.plurals.looking_number_count,
+                    vacancy.lookingNumber?: 0,
+                    vacancy.lookingNumber?: 0
                 )
             } else {
                 lookingNumberTextView.visibility = View.GONE
@@ -57,8 +58,23 @@ class VacancyViewHolder(
             companyTextView.text = vacancy.company
             experienceTextView.text = vacancy.experience?.previewText
 
-            publishedDateTextView.text = vacancy.publishedDate
-
+            vacancy.publishedDate?.let { publishedDate ->
+                publishedDateTextView.text = formatPublishedDateToUserStyle(publishedDate)
+            }
         }
+    }
+
+    private fun formatPublishedDateToUserStyle(publishedDate: String): String {
+        val date = LocalDate.parse(publishedDate)
+
+        val day = date.dayOfMonth
+        val month = date.monthNumber
+
+        val monthsGenitive = listOf("",
+            "января", "февраля", "марта", "апреля", "мая", "июня",
+            "июля", "августа", "сентября", "октября", "ноября", "декабря"
+        )
+
+        return "Опубликовано $day ${monthsGenitive[month]}"
     }
 }

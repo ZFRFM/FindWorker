@@ -15,4 +15,7 @@
     <string name="exp_1_3">Опыт от 1 года до 3 лет</string>
     <string name="published_date">Опубликовано %s %s</string>
     <string name="respond">Откликнуться</string>
+    <string name="sort">Сортировка</string>
+    <string name="sort_text">По соответствию</string>
+    <string name="vacancy_number">%s вакансий</string>
 </resources>

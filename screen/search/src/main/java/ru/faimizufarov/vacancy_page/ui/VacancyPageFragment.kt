@@ -6,7 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
+import ru.faimizufarov.domain.models.Vacancy
+import ru.faimizufarov.search.R
 import ru.faimizufarov.search.databinding.FragmentVacancyPageBinding
 import ru.faimizufarov.vacancy_page.di.VacancyPageComponentProvider
 import javax.inject.Inject
@@ -41,13 +45,103 @@ class VacancyPageFragment(private val id: String) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.vacancyPageConstraint.visibility = View.GONE
         vacancyPageViewModel.filterResult(id)
-        vacancyPageViewModel.vacancy.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), it.title.toString(), Toast.LENGTH_SHORT).show()
+        vacancyPageViewModel.vacancy.observe(viewLifecycleOwner) { vacancy ->
+            observeViewModel(vacancy)
+        }
+
+        binding.respondButton.setOnClickListener {
+            Toast.makeText(requireContext(), "Отклик", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.arrowBackImageView.setOnClickListener {
+            val navigateToSearchFragment = bundleOf(NAVIGATE_TO_SEARCH_FRAGMENT to true)
+            setFragmentResult(NAVIGATE_TO_SEARCH_FRAGMENT_RESULT, navigateToSearchFragment)
+        }
+    }
+
+    private fun observeViewModel(vacancy: Vacancy) {
+        binding.vacancyPageConstraint.visibility = View.VISIBLE
+        binding.vacancyTitleTextView.text = vacancy.title
+
+        binding.salaryTextView.text = vacancy.salary?.full
+
+        binding.experienceTextView.text = vacancy.experience?.text
+
+
+        val firstSchedule = vacancy.schedules?.first()?.replaceFirstChar { it.uppercase() }
+        val finalSchedules: MutableList<String> =
+            vacancy.schedules?.toMutableList()?: mutableListOf()
+
+        finalSchedules[0] = firstSchedule?: ""
+        binding.schedulesTextView.text = finalSchedules.joinToString(separator = ", ")
+
+
+        if (vacancy.appliedNumber != null) {
+            binding.respondedPersonCountTextView.text = resources.getQuantityString(
+                ru.faimizufarov.core.R.plurals.responded_people_count,
+                vacancy.appliedNumber?: 0,
+                vacancy.appliedNumber?: 0
+            )
+        } else {
+            with(binding) {
+                respondedBackground.visibility = View.GONE
+                respondedPersonCountTextView.visibility = View.GONE
+                respondedPersonIcon.visibility = View.GONE
+            }
+        }
+
+        if (vacancy.lookingNumber != null) {
+            binding.lookingTextView.text = resources.getQuantityString(
+                ru.faimizufarov.core.R.plurals.looking_number_count,
+                vacancy.lookingNumber?: 0,
+                vacancy.lookingNumber?: 0
+            )
+        } else {
+            with(binding) {
+                lookingBackground.visibility = View.GONE
+                lookingTextView.visibility = View.GONE
+                lookingPersonIcon.visibility = View.GONE
+            }
+        }
+
+        binding.companyTextView.text = vacancy.company
+
+        binding.addressTextView.text = getString(
+            ru.faimizufarov.core.R.string.address,
+            vacancy.address?.town,
+            vacancy.address?.street,
+            vacancy.address?.house
+        )
+
+        if (vacancy.description != null) {
+            binding.descriptionTextView.text = vacancy.description
+        } else {
+            binding.descriptionTextView.visibility = View.GONE
+        }
+
+        if (vacancy.responsibilities != null) {
+            binding.responsibilitiesTextView.text = vacancy.responsibilities
+        } else {
+            binding.responsibilitiesTextView.visibility = View.GONE
+        }
+
+        if (vacancy.isFavorite == true) {
+            binding.favouriteImageView.setImageResource(
+                ru.faimizufarov.core.R.drawable.action_full_heart
+            )
+        } else {
+            binding.favouriteImageView.setImageResource(
+                ru.faimizufarov.core.R.drawable.action_favourites
+            )
         }
     }
 
     companion object {
         fun newInstance(id: String) = VacancyPageFragment(id)
+
+        const val NAVIGATE_TO_SEARCH_FRAGMENT = "NAVIGATE_TO_SEARCH_FRAGMENT"
+        const val NAVIGATE_TO_SEARCH_FRAGMENT_RESULT = "NAVIGATE_TO_SEARCH_FRAGMENT_RESULT"
     }
 }

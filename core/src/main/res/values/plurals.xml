@@ -14,6 +14,20 @@
         <item quantity="other">%d вакансий</item>
     </plurals>
 
+    <plurals name="responded_people_count">
+        <item quantity="one">%d человек уже откликнулся</item>
+        <item quantity="few">%d человека уже откликнулись</item>
+        <item quantity="many">%d человек уже откликнулись</item>
+        <item quantity="other">%d человек уже откликнулись</item>
+    </plurals>
+
+    <plurals name="looking_people_count">
+        <item quantity="one">%d человек сейчас смотрит</item>
+        <item quantity="few">%d человека сейчас смотрят</item>
+        <item quantity="many">%d человек сейчас смотрят</item>
+        <item quantity="other">%d человек сейчас смотрят</item>
+    </plurals>
+
     <plurals name="looking_number_count">
         <item quantity="one">Сейчас просматривает %d человек</item>
         <item quantity="few">Сейчас просматривают %d человека</item>

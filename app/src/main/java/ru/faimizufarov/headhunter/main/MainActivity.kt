@@ -71,6 +71,15 @@ class MainActivity : AppCompatActivity() {
             }
             mainViewModel.setBottomNavViewAvailability(true)
         }
+
+        supportFragmentManager.setFragmentResultListener(
+            VacancyPageFragment.NAVIGATE_TO_SEARCH_FRAGMENT_RESULT, this
+        ) { _, bundle ->
+            val result = bundle.getBoolean(VacancyPageFragment.NAVIGATE_TO_SEARCH_FRAGMENT)
+            if (result) {
+                setCurrentFragment(SearchFragment.newInstance())
+            }
+        }
     }
 
     private fun listenerForNavigationToVacancyPageFragment() {

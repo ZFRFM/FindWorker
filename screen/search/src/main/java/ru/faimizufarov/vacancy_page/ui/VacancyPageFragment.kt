@@ -9,9 +9,11 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
+import ru.faimizufarov.domain.models.Question
 import ru.faimizufarov.domain.models.Vacancy
 import ru.faimizufarov.search.R
 import ru.faimizufarov.search.databinding.FragmentVacancyPageBinding
+import ru.faimizufarov.vacancy_page.adapter.QuestionAdapter
 import ru.faimizufarov.vacancy_page.di.VacancyPageComponentProvider
 import javax.inject.Inject
 
@@ -21,6 +23,8 @@ class VacancyPageFragment(private val id: String) : Fragment() {
     @Inject
     lateinit var vacancyPageViewModelFactory: VacancyPageViewModelFactory
     private lateinit var vacancyPageViewModel: VacancyPageViewModel
+
+    private val questionAdapter = QuestionAdapter(onItemClick = ::updateQuestionFeed)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -127,15 +131,39 @@ class VacancyPageFragment(private val id: String) : Fragment() {
             binding.responsibilitiesTextView.visibility = View.GONE
         }
 
-        if (vacancy.isFavorite == true) {
-            binding.favouriteImageView.setImageResource(
-                ru.faimizufarov.core.R.drawable.action_full_heart
-            )
-        } else {
-            binding.favouriteImageView.setImageResource(
-                ru.faimizufarov.core.R.drawable.action_favourites
+        binding.questionRecyclerView.adapter = questionAdapter
+        val questions = vacancy.questions?.map { questionText ->
+            Question(
+                questionText = questionText
             )
         }
+        questionAdapter.submitList(questions)
+
+        with(binding) {
+            if (vacancy.isFavorite == true) {
+                favouriteImageView.setImageResource(
+                    ru.faimizufarov.core.R.drawable.action_full_heart
+                )
+                favouriteImageView.setOnClickListener {
+                    favouriteImageView.setImageResource(
+                        ru.faimizufarov.core.R.drawable.action_favourites
+                    )
+                }
+            } else {
+                favouriteImageView.setImageResource(
+                    ru.faimizufarov.core.R.drawable.action_favourites
+                )
+                favouriteImageView.setOnClickListener {
+                    favouriteImageView.setImageResource(
+                        ru.faimizufarov.core.R.drawable.action_full_heart
+                    )
+                }
+            }
+        }
+    }
+
+    private fun updateQuestionFeed(question: Question) {
+        Toast.makeText(requireContext(), "Клик по вопросу", Toast.LENGTH_SHORT).show()
     }
 
     companion object {

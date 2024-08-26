@@ -37,6 +37,20 @@ android {
 
 dependencies {
     implementation(project(path = ":core"))
+    implementation(project(path = ":domain"))
+    implementation("androidx.activity:activity-ktx:1.9.1")
+    implementation("androidx.fragment:fragment-ktx:1.8.2")
+
+    //region Coroutine
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
+    //endregion
+
+    //region Arch Components
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.4")
+    //endregion
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

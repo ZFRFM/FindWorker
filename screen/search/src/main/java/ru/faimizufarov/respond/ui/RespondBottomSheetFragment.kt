@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import ru.faimizufarov.search.R
 import ru.faimizufarov.search.databinding.FragmentRespondBottomSheetBinding
 
 class RespondBottomSheetFragment: BottomSheetDialogFragment() {
@@ -47,9 +46,9 @@ class RespondBottomSheetFragment: BottomSheetDialogFragment() {
         fun newInstance(questionText: String?): RespondBottomSheetFragment {
             val args = Bundle()
             args.putString(QUESTION, questionText)
-            val fragment = RespondBottomSheetFragment()
-            fragment.arguments = args
-            return fragment
+            val respondBottomSheetFragment = RespondBottomSheetFragment()
+            respondBottomSheetFragment.arguments = args
+            return respondBottomSheetFragment
         }
 
         const val QUESTION = "QUESTION"

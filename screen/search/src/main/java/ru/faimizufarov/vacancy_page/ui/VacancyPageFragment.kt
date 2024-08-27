@@ -5,19 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
 import ru.faimizufarov.domain.models.Question
 import ru.faimizufarov.domain.models.Vacancy
-import ru.faimizufarov.search.R
+import ru.faimizufarov.respond.ui.RespondBottomSheetFragment
 import ru.faimizufarov.search.databinding.FragmentVacancyPageBinding
 import ru.faimizufarov.vacancy_page.adapter.QuestionAdapter
 import ru.faimizufarov.vacancy_page.di.VacancyPageComponentProvider
 import javax.inject.Inject
 
-class VacancyPageFragment(private val id: String) : Fragment() {
+class VacancyPageFragment() : Fragment() {
     private lateinit var binding: FragmentVacancyPageBinding
 
     @Inject
@@ -50,7 +49,12 @@ class VacancyPageFragment(private val id: String) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vacancyPageConstraint.visibility = View.GONE
-        vacancyPageViewModel.filterResult(id)
+
+        val vacancyId = arguments?.getString(VACANCY_ID)
+        vacancyPageViewModel.filterResult(
+            vacancyId?: error("VacancyId was not included in the VacancyPageFragment arguments")
+        )
+
         vacancyPageViewModel.vacancy.observe(viewLifecycleOwner) { vacancy ->
             observeViewModel(vacancy)
         }
@@ -182,7 +186,15 @@ class VacancyPageFragment(private val id: String) : Fragment() {
     }
 
     companion object {
-        fun newInstance(id: String) = VacancyPageFragment(id)
+        fun newInstance(id: String): VacancyPageFragment {
+            val args = Bundle()
+            args.putString(VACANCY_ID, id)
+            val vacancyPageFragment = VacancyPageFragment()
+            vacancyPageFragment.arguments = args
+            return vacancyPageFragment
+        }
+
+        const val VACANCY_ID = "QUESTION_ID"
 
         const val QUESTION_TEXT = "QUESTION_TEXT"
         const val NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION = "NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION"

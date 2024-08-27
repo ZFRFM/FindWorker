@@ -96,6 +96,17 @@ class MainActivity : AppCompatActivity() {
                 setCurrentFragment(VacancyPageFragment.newInstance(vacancyId))
             }
         }
+
+        supportFragmentManager.setFragmentResultListener(
+            FavouriteFragment.NAV_TO_VACANCY_PAGE_FROM_FAVOURITES_RESULT, this
+        ) { _, bundle ->
+            val vacancyId = bundle.getString(FavouriteFragment.FAVOURITE_VACANCY_ID)
+                ?: error("vacancyId was not accepted")
+            val result = bundle.getBoolean(FavouriteFragment.NAV_TO_VACANCY_PAGE_FROM_FAVOURITES)
+            if (result) {
+                setCurrentFragment(VacancyPageFragment.newInstance(vacancyId))
+            }
+        }
     }
 
     private fun listenerForNavigationToBottomSheetFragmentWithRespond() {

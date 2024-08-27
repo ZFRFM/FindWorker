@@ -5,7 +5,7 @@ import ru.faimizufarov.domain.models.Address
 import ru.faimizufarov.domain.models.Experience
 import ru.faimizufarov.domain.models.Salary
 
-class TypeConverters {
+class LocalTypeConverters {
     @TypeConverter
     fun fromAddressToString(address: Address): String {
         return "${address.town},${address.street},${address.house}"

@@ -42,7 +42,7 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.9.1")
     implementation("androidx.fragment:fragment-ktx:1.8.2")
 
-    //region Kotlin Serialization
+    //region Kotlin Datetime
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
     //endregion
 

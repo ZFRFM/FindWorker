@@ -3,8 +3,8 @@ package ru.faimizufarov.core.adapters
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.datetime.LocalDate
+import ru.faimizufarov.core.databinding.ItemVacancyBinding
 import ru.faimizufarov.domain.models.Vacancy
-import ru.faimizufarov.search.databinding.ItemVacancyBinding
 
 class VacancyViewHolder(
     private val itemBinding: ItemVacancyBinding,

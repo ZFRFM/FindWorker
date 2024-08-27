@@ -25,10 +25,17 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
     implementation(project(path = ":domain"))
+
+    //region Kotlin Datetime
+    implementation(libs.kotlinx.datetime)
+    //endregion
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

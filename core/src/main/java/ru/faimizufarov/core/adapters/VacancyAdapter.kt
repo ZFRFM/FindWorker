@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import ru.faimizufarov.core.databinding.ItemVacancyBinding
 import ru.faimizufarov.domain.models.Vacancy
-import ru.faimizufarov.search.databinding.ItemVacancyBinding
+
 
 class VacancyAdapter(
     private val onItemClick: (Vacancy) -> Unit,

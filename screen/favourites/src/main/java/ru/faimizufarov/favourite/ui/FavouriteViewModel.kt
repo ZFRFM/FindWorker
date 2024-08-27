@@ -1,4 +1,4 @@
-package ru.faimizufarov.favourites.ui
+package ru.faimizufarov.favourite.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package ru.faimizufarov.favourites.ui
+package ru.faimizufarov.favourite.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -56,7 +56,12 @@ class VacancyPageFragment(private val id: String) : Fragment() {
         }
 
         binding.respondButton.setOnClickListener {
-            Toast.makeText(requireContext(), "Отклик", Toast.LENGTH_SHORT).show()
+            val navigateToRespondBottomSheetFragment =
+                bundleOf(NAVIGATE_TO_RESPOND_BOTTOM_SHEET to true)
+            setFragmentResult(
+                NAVIGATE_TO_RESPOND_BOTTOM_SHEET_RESULT,
+                navigateToRespondBottomSheetFragment
+            )
         }
 
         binding.arrowBackImageView.setOnClickListener {
@@ -163,11 +168,28 @@ class VacancyPageFragment(private val id: String) : Fragment() {
     }
 
     private fun updateQuestionFeed(question: Question) {
-        Toast.makeText(requireContext(), "Клик по вопросу", Toast.LENGTH_SHORT).show()
+        val navigateToRespondBottomSheetWithQuestion = bundleOf(
+            NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION to true
+        )
+        navigateToRespondBottomSheetWithQuestion.putString(
+            QUESTION_TEXT,
+            question.questionText
+        )
+        setFragmentResult(
+            NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION_RESULT,
+            navigateToRespondBottomSheetWithQuestion
+        )
     }
 
     companion object {
         fun newInstance(id: String) = VacancyPageFragment(id)
+
+        const val QUESTION_TEXT = "QUESTION_TEXT"
+        const val NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION = "NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION"
+        const val NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION_RESULT = "NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION_RESULT"
+
+        const val NAVIGATE_TO_RESPOND_BOTTOM_SHEET = "NAVIGATE_TO_RESPOND_BOTTOM_SHEET"
+        const val NAVIGATE_TO_RESPOND_BOTTOM_SHEET_RESULT = "NAVIGATE_TO_RESPOND_BOTTOM_SHEET_RESULT"
 
         const val NAVIGATE_TO_SEARCH_FRAGMENT = "NAVIGATE_TO_SEARCH_FRAGMENT_FROM_VACANCY_PAGE"
         const val NAVIGATE_TO_SEARCH_FRAGMENT_RESULT = "NAVIGATE_TO_SEARCH_FRAGMENT_RESULT_FROM_VACANCY_PAGE"

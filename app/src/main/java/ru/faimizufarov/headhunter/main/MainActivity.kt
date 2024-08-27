@@ -1,7 +1,6 @@
 package ru.faimizufarov.headhunter.main
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -12,6 +11,7 @@ import ru.faimizufarov.headhunter.R
 import ru.faimizufarov.headhunter.databinding.ActivityMainBinding
 import ru.faimizufarov.messages.MessagesFragment
 import ru.faimizufarov.profile.ProfileFragment
+import ru.faimizufarov.respond.ui.RespondBottomSheetFragment
 import ru.faimizufarov.responses.ResponsesFragment
 import ru.faimizufarov.search.ui.SearchFragment
 import ru.faimizufarov.vacancy_page.ui.VacancyPageFragment
@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         listenerForNavigationToAuthSecondFragment()
         listenerForNavigationToSearchFragment()
         listenerForNavigationToVacancyPageFragment()
+        listenerForNavigationToBottomSheetFragmentWithRespond()
+        listenerForNavigationToBottomSheetFragmentWithQuestion()
     }
 
     private fun observeBottomNavViewAvailability() {
@@ -92,6 +94,33 @@ class MainActivity : AppCompatActivity() {
             val result = bundle.getBoolean(SearchFragment.NAVIGATE_TO_VACANCY_PAGE_FRAGMENT)
             if (result) {
                 setCurrentFragment(VacancyPageFragment.newInstance(vacancyId))
+            }
+        }
+    }
+
+    private fun listenerForNavigationToBottomSheetFragmentWithRespond() {
+        supportFragmentManager.setFragmentResultListener(
+            VacancyPageFragment.NAVIGATE_TO_RESPOND_BOTTOM_SHEET_RESULT, this
+        ) { _, bundle ->
+            val result = bundle.getBoolean(VacancyPageFragment.NAVIGATE_TO_RESPOND_BOTTOM_SHEET)
+            if (result) {
+                val bottomSheet = RespondBottomSheetFragment.newInstance(null)
+                bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+            }
+        }
+    }
+
+    private fun listenerForNavigationToBottomSheetFragmentWithQuestion() {
+        supportFragmentManager.setFragmentResultListener(
+            VacancyPageFragment.NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION_RESULT, this
+        ) { _, bundle ->
+            val result = bundle.getBoolean(
+                VacancyPageFragment.NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION
+            )
+            val questionText = bundle.getString(VacancyPageFragment.QUESTION_TEXT)
+            if (result) {
+                val bottomSheet = RespondBottomSheetFragment.newInstance(questionText)
+                bottomSheet.show(supportFragmentManager, bottomSheet.tag)
             }
         }
     }

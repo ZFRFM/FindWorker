@@ -7,6 +7,13 @@
     android:padding="16dp"
     android:background="@android:color/background_dark">
 
+    <View
+        android:layout_width="38dp"
+        android:layout_height="5dp"
+        android:background="@drawable/rectangle_background"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"/>
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,7 +66,23 @@
         android:layout_marginTop="24dp"
         android:background="@color/grey_2" />
 
+    <EditText
+        android:id="@+id/letterEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="85dp"
+        android:gravity="top|start"
+        android:hint="@string/letter_text"
+        android:textColorHint="@color/grey_3"
+        android:fontFamily="@font/sf_pro_display_regular"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        android:inputType="text"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp" />
+
     <TextView
+        android:id="@+id/addLetterTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -70,6 +93,7 @@
         android:layout_marginTop="40dp" />
 
     <Button
+        android:id="@+id/respondButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/respond_square_background"

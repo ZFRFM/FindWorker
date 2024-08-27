@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import ru.faimizufarov.search.R
 import ru.faimizufarov.search.databinding.FragmentRespondBottomSheetBinding
 
 class RespondBottomSheetFragment: BottomSheetDialogFragment() {
@@ -20,7 +21,37 @@ class RespondBottomSheetFragment: BottomSheetDialogFragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val questionText = arguments?.getString(QUESTION)
+        if (questionText?.isNotEmpty() == true) {
+            with(binding) {
+                letterEditText.visibility = View.VISIBLE
+                addLetterTextView.visibility = View.INVISIBLE
+                letterEditText.setText(questionText)
+            }
+        }
+
+        binding.addLetterTextView.setOnClickListener {
+            binding.letterEditText.visibility = View.VISIBLE
+            binding.addLetterTextView.visibility = View.INVISIBLE
+        }
+
+        binding.respondButton.setOnClickListener {
+            dismiss()
+        }
+    }
+
     companion object {
-        fun newInstance() = RespondBottomSheetFragment()
+        fun newInstance(questionText: String?): RespondBottomSheetFragment {
+            val args = Bundle()
+            args.putString(QUESTION, questionText)
+            val fragment = RespondBottomSheetFragment()
+            fragment.arguments = args
+            return fragment
+        }
+
+        const val QUESTION = "QUESTION"
     }
 }

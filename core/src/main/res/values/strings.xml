@@ -7,4 +7,13 @@
     <string name="action_profile">Профиль</string>
     <string name="looking_person_number">Сейчас просматривает %d человек</string>
     <string name="address">%s, %s, %s</string>
+    <string name="vacancy_title">UI/UX Designer</string>
+    <string name="favourite">Избранное</string>
+    <string name="minsk">Минск</string>
+    <string name="mobirix">Мобирикс</string>
+    <string name="confirmed_company">Подтверждённый работадатель</string>
+    <string name="experience">Опыт работы</string>
+    <string name="exp_1_3">Опыт от 1 года до 3 лет</string>
+    <string name="published_date">Опубликовано %s %s</string>
+    <string name="respond">Откликнуться</string>
 </resources>

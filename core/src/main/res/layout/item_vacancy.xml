@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="@id/guidelineBegin" />
 
     <ImageView
-        android:id="@+id/vacancyFullHeartImageView"
+        android:id="@+id/vacancy_heart_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/action_full_heart"

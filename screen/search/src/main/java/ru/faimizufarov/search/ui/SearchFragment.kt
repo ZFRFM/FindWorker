@@ -9,9 +9,11 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
+import ru.faimizufarov.core.R
 import ru.faimizufarov.domain.models.Offer
 import ru.faimizufarov.domain.models.Result
 import ru.faimizufarov.domain.models.Vacancy
@@ -29,7 +31,10 @@ class SearchFragment : Fragment() {
     private lateinit var searchViewModel: SearchViewModel
 
     private val offerAdapter = OfferAdapter(onItemClick = ::updateOfferFeed)
-    private val vacancyAdapter = VacancyAdapter(onItemClick = ::updateVacancyFeed)
+    private val vacancyAdapter = VacancyAdapter(
+        onItemClick = ::updateVacancyFeed,
+        onHeartClick = ::updateVacancyHeart
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -138,6 +143,10 @@ class SearchFragment : Fragment() {
             NAVIGATE_TO_VACANCY_PAGE_FRAGMENT to true
         )
         setFragmentResult(VACANCY_ID_AND_NAVIGATE_RESULT, vacancyIdBundle)
+    }
+
+    private fun updateVacancyHeart(vacancy: Vacancy) {
+        Toast.makeText(requireContext(), "HeartClick", Toast.LENGTH_SHORT).show()
     }
 
     private fun correctVacancyEnding(result: Result) {

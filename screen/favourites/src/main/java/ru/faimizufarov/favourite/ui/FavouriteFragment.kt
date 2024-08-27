@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
@@ -22,7 +23,10 @@ class FavouriteFragment : Fragment() {
     lateinit var favouriteViewModelFactory: FavouriteViewModelFactory
     private lateinit var favouriteViewModel: FavouriteViewModel
 
-    private val vacancyAdapter = VacancyAdapter(onItemClick = ::updateVacancyFeed)
+    private val vacancyAdapter = VacancyAdapter(
+        onItemClick = ::updateVacancyFeed,
+        onHeartClick = ::updateVacancyHeart
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +77,10 @@ class FavouriteFragment : Fragment() {
             NAV_TO_VACANCY_PAGE_FROM_FAVOURITES to true
         )
         setFragmentResult(NAV_TO_VACANCY_PAGE_FROM_FAVOURITES_RESULT, vacancyIdBundle)
+    }
+
+    private fun updateVacancyHeart(vacancy: Vacancy) {
+        Toast.makeText(requireContext(), "HeartClick", Toast.LENGTH_SHORT).show()
     }
 
     companion object {

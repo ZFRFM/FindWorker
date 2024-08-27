@@ -10,6 +10,7 @@ import ru.faimizufarov.domain.models.Vacancy
 
 class VacancyAdapter(
     private val onItemClick: (Vacancy) -> Unit,
+    private val onHeartClick: (Vacancy) -> Unit
 ): ListAdapter<Vacancy, VacancyViewHolder>(ItemCallback) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -22,9 +23,11 @@ class VacancyAdapter(
                 false,
             )
 
-        return VacancyViewHolder(itemBinding) { index ->
+        return VacancyViewHolder(itemBinding, { index ->
             onItemClick(currentList[index])
-        }
+        }, { index ->
+            onHeartClick(currentList[index])
+        })
     }
 
     override fun getItemCount() = currentList.size

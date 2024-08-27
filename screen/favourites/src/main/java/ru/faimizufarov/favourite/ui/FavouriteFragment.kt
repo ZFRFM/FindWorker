@@ -80,7 +80,8 @@ class FavouriteFragment : Fragment() {
     }
 
     private fun updateVacancyHeart(vacancy: Vacancy) {
-        Toast.makeText(requireContext(), "HeartClick", Toast.LENGTH_SHORT).show()
+        val updatedVacancy = vacancy.copy(isFavorite = !vacancy.isFavorite)
+        favouriteViewModel.updateFavouriteVacancy(updatedVacancy)
     }
 
     companion object {

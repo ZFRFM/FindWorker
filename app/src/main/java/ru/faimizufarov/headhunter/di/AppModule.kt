@@ -36,8 +36,10 @@ class AppModule(val context: Context) {
 
     @Provides
     fun provideFavouriteViewModelFactory(
-        getFavouritesUseCase: GetFavouritesUseCase
+        getFavouritesUseCase: GetFavouritesUseCase,
+        updateFavouriteVacancyUseCase: UpdateFavouriteVacancyUseCase
     ) = FavouriteViewModelFactory(
-        getFavouritesUseCase = getFavouritesUseCase
+        getFavouritesUseCase = getFavouritesUseCase,
+        updateFavouriteVacancyUseCase = updateFavouriteVacancyUseCase
     )
 }

@@ -104,6 +104,8 @@ class SearchFragment : Fragment() {
                 }
                 false
             }
+
+            noticeBadgeCounter()
         }
     }
 
@@ -147,10 +149,18 @@ class SearchFragment : Fragment() {
         )
     }
 
+    private fun noticeBadgeCounter() {
+        val isDataLoaded = bundleOf(LOADED_DATA to true)
+        setFragmentResult(LOADED_DATA_RESULT, isDataLoaded)
+    }
+
     companion object {
         fun newInstance() = SearchFragment()
 
         const val SEARCH_FRAGMENT = "SEARCH_FRAGMENT"
+
+        const val LOADED_DATA = "LOADED_DATA"
+        const val LOADED_DATA_RESULT = "LOADED_DATA_RESULT"
 
         const val NAVIGATE_TO_VACANCY_PAGE_FRAGMENT = "NAVIGATE_TO_VACANCY_PAGE_FRAGMENT"
         const val VACANCY_ID = "VACANCY_ID"

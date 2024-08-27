@@ -1,10 +1,13 @@
 package ru.faimizufarov.data.repository
 
 import android.content.Context
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import ru.faimizufarov.data.network.AppApi
 import ru.faimizufarov.domain.repository.ResultRepository
 import ru.faimizufarov.domain.models.Result
 import ru.faimizufarov.domain.models.Vacancy
+import kotlin.coroutines.suspendCoroutine
 
 class ResultRepositoryImpl(
     private val context: Context

@@ -3,6 +3,7 @@ package ru.faimizufarov.headhunter.di
 import android.app.Application
 import dagger.Component
 import ru.faimizufarov.favourite.di.FavouriteComponent
+import ru.faimizufarov.headhunter.main.MainActivity
 import ru.faimizufarov.search.di.SearchComponent
 import ru.faimizufarov.vacancy_page.di.VacancyPageComponent
 import javax.inject.Singleton
@@ -15,6 +16,8 @@ interface AppComponent:
     FavouriteComponent
 {
     fun inject(application: Application)
+
+    fun injectMainActivity(mainActivity: MainActivity)
 
     @Component.Factory
     interface Factory {

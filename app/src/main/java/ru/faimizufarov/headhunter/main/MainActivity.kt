@@ -1,12 +1,13 @@
 package ru.faimizufarov.headhunter.main
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import ru.faimizufarov.auth.AuthFirstFragment
 import ru.faimizufarov.auth.AuthSecondFragment
 import ru.faimizufarov.favourite.ui.FavouriteFragment
+import ru.faimizufarov.headhunter.App
 import ru.faimizufarov.headhunter.R
 import ru.faimizufarov.headhunter.databinding.ActivityMainBinding
 import ru.faimizufarov.messages.MessagesFragment
@@ -15,16 +16,27 @@ import ru.faimizufarov.respond.ui.RespondBottomSheetFragment
 import ru.faimizufarov.responses.ResponsesFragment
 import ru.faimizufarov.search.ui.SearchFragment
 import ru.faimizufarov.vacancy_page.ui.VacancyPageFragment
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val mainViewModel: MainViewModel by viewModels()
+
+    @Inject
+    lateinit var mainViewModelFactory: MainViewModelFactory
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.bottomNavView.selectedItemId = R.id.action_search
+
+        (applicationContext as App).appComponent.injectMainActivity(this)
+        mainViewModel =
+            ViewModelProvider(
+                this,
+                mainViewModelFactory,
+            )[MainViewModel::class]
 
         binding.bottomNavView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -37,7 +49,8 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        observeBottomNavViewAvailability()
+        observeViewModel()
+        listenerForLoadedData()
         listenerForNavigationToAuthSecondFragment()
         listenerForNavigationToSearchFragment()
         listenerForNavigationToVacancyPageFragment()
@@ -46,10 +59,32 @@ class MainActivity : AppCompatActivity() {
         listenerForNavigationToFavouriteFragment()
     }
 
-    private fun observeBottomNavViewAvailability() {
+    private fun observeViewModel() {
         mainViewModel.isBottomNavViewEnabled.observe(this) { isEnabled ->
             for (i in 0 until binding.bottomNavView.menu.size()) {
                 binding.bottomNavView.menu.getItem(i).isEnabled = isEnabled
+            }
+        }
+    }
+
+    private fun updateBadgeCount(favouriteVacancies: Int) {
+        val badge = binding.bottomNavView.getOrCreateBadge(R.id.action_favourites)
+        val isFavouriteVacancy = favouriteVacancies > 0
+        if (isFavouriteVacancy) {
+            badge.number = favouriteVacancies
+        }
+        badge.isVisible = isFavouriteVacancy
+    }
+
+    private fun listenerForLoadedData() {
+        supportFragmentManager.setFragmentResultListener(
+            SearchFragment.LOADED_DATA_RESULT, this
+        ) { _, bundle ->
+            val result = bundle.getBoolean(SearchFragment.LOADED_DATA)
+            if (result) {
+                mainViewModel.badgeCounterValue.observe(this) { favouriteVacancies ->
+                    updateBadgeCount(favouriteVacancies)
+                }
             }
         }
     }

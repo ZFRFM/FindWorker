@@ -51,12 +51,13 @@ class VacancyPageFragment() : Fragment() {
         binding.vacancyPageConstraint.visibility = View.GONE
 
         val vacancyId = arguments?.getString(VACANCY_ID)
+            ?: error("VacancyId was not included in the VacancyPageFragment arguments")
         vacancyPageViewModel.filterResult(
-            vacancyId?: error("VacancyId was not included in the VacancyPageFragment arguments")
+            vacancyId
         )
 
         vacancyPageViewModel.vacancy.observe(viewLifecycleOwner) { vacancy ->
-            observeViewModel(vacancy)
+            observeViewModel(vacancy, vacancyId)
         }
 
         binding.respondButton.setOnClickListener {
@@ -84,18 +85,18 @@ class VacancyPageFragment() : Fragment() {
         }
     }
 
-    private fun observeViewModel(vacancy: Vacancy) {
+    private fun observeViewModel(vacancy: Vacancy, vacancyId: String) {
         binding.vacancyPageConstraint.visibility = View.VISIBLE
         binding.vacancyTitleTextView.text = vacancy.title
 
-        binding.salaryTextView.text = vacancy.salary?.full
+        binding.salaryTextView.text = vacancy.salary.full
 
-        binding.experienceTextView.text = vacancy.experience?.text
+        binding.experienceTextView.text = vacancy.experience.text
 
 
-        val firstSchedule = vacancy.schedules?.first()?.replaceFirstChar { it.uppercase() }
+        val firstSchedule = vacancy.schedules.first().replaceFirstChar { it.uppercase() }
         val finalSchedules: MutableList<String> =
-            vacancy.schedules?.toMutableList()?: mutableListOf()
+            vacancy.schedules.toMutableList()
 
         finalSchedules[0] = firstSchedule?: ""
         binding.schedulesTextView.text = finalSchedules.joinToString(separator = ", ")
@@ -133,9 +134,9 @@ class VacancyPageFragment() : Fragment() {
 
         binding.addressTextView.text = getString(
             ru.faimizufarov.core.R.string.address,
-            vacancy.address?.town,
-            vacancy.address?.street,
-            vacancy.address?.house
+            vacancy.address.town,
+            vacancy.address.street,
+            vacancy.address.house
         )
 
         if (vacancy.description != null) {
@@ -144,14 +145,10 @@ class VacancyPageFragment() : Fragment() {
             binding.descriptionTextView.visibility = View.GONE
         }
 
-        if (vacancy.responsibilities != null) {
-            binding.responsibilitiesTextView.text = vacancy.responsibilities
-        } else {
-            binding.responsibilitiesTextView.visibility = View.GONE
-        }
+        binding.responsibilitiesTextView.text = vacancy.responsibilities
 
         binding.questionRecyclerView.adapter = questionAdapter
-        val questions = vacancy.questions?.map { questionText ->
+        val questions = vacancy.questions.map { questionText ->
             Question(
                 questionText = questionText
             )
@@ -159,11 +156,13 @@ class VacancyPageFragment() : Fragment() {
         questionAdapter.submitList(questions)
 
         with(binding) {
-            if (vacancy.isFavorite == true) {
+            if (vacancy.isFavorite) {
                 favouriteImageView.setImageResource(
                     ru.faimizufarov.core.R.drawable.action_full_heart
                 )
                 favouriteImageView.setOnClickListener {
+                    refreshData(vacancy, vacancyId)
+
                     favouriteImageView.setImageResource(
                         ru.faimizufarov.core.R.drawable.action_favourites
                     )
@@ -173,6 +172,8 @@ class VacancyPageFragment() : Fragment() {
                     ru.faimizufarov.core.R.drawable.action_favourites
                 )
                 favouriteImageView.setOnClickListener {
+                    refreshData(vacancy, vacancyId)
+
                     favouriteImageView.setImageResource(
                         ru.faimizufarov.core.R.drawable.action_full_heart
                     )
@@ -193,6 +194,12 @@ class VacancyPageFragment() : Fragment() {
             NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION_RESULT,
             navigateToRespondBottomSheetWithQuestion
         )
+    }
+
+    private fun refreshData(vacancy: Vacancy, vacancyId: String) {
+        val updatedVacancy = vacancy.copy(isFavorite = !vacancy.isFavorite)
+        vacancyPageViewModel.updateFavouriteVacancy(updatedVacancy)
+        vacancyPageViewModel.filterResult(vacancyId)
     }
 
     companion object {

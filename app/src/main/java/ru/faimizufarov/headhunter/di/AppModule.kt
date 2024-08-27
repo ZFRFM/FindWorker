@@ -29,9 +29,11 @@ class AppModule(val context: Context) {
 
     @Provides
     fun provideVacancyPageViewModelFactory(
-        getVacancyUseCase: GetVacancyUseCase
+        getVacancyUseCase: GetVacancyUseCase,
+        updateFavouriteVacancyUseCase: UpdateFavouriteVacancyUseCase
     ) = VacancyPageViewModelFactory(
-        getVacancyUseCase = getVacancyUseCase
+        getVacancyUseCase = getVacancyUseCase,
+        updateFavouriteVacancyUseCase = updateFavouriteVacancyUseCase
     )
 
     @Provides

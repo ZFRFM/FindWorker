@@ -6,6 +6,7 @@ import ru.faimizufarov.domain.repository.ResultRepository
 import ru.faimizufarov.domain.usecase.GetFavouritesUseCase
 import ru.faimizufarov.domain.usecase.GetResultUseCase
 import ru.faimizufarov.domain.usecase.GetVacancyUseCase
+import ru.faimizufarov.domain.usecase.SetBadgeCounterValueUseCase
 
 @Module
 class DomainModule {
@@ -20,4 +21,8 @@ class DomainModule {
     @Provides
     fun provideGetFavouritesUseCase(resultRepository: ResultRepository) =
         GetFavouritesUseCase(resultRepository)
+
+    @Provides
+    fun provideSetBadgeCounterValueUseCase(resultRepository: ResultRepository) =
+        SetBadgeCounterValueUseCase(resultRepository)
 }

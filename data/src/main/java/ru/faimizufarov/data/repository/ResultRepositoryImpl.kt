@@ -31,8 +31,8 @@ class ResultRepositoryImpl(
         return favouriteVacanciesList
     }
 
-    override suspend fun setBadgeCounterEmitValue(emitValue: Int) {
-        TODO("Not yet implemented")
+    override suspend fun setBadgeCounterValue(): Int {
+        return requestFavouriteVacancies().size
     }
 
 }

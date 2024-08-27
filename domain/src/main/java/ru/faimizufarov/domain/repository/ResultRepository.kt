@@ -10,5 +10,5 @@ interface ResultRepository {
 
     suspend fun requestFavouriteVacancies(): List<Vacancy>
 
-    suspend fun setBadgeCounterEmitValue(emitValue: Int)
+    suspend fun setBadgeCounterValue(): Int
 }

@@ -26,4 +26,10 @@ class MainViewModel(
             _badgeCounterValue.value = setBadgeCounterValueUseCase.execute()
         }
     }
+
+    fun refreshData() {
+        viewModelScope.launch {
+            _badgeCounterValue.value = setBadgeCounterValueUseCase.execute()
+        }
+    }
 }

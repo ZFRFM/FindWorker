@@ -146,6 +146,9 @@ class SearchFragment : Fragment() {
     private fun updateVacancyHeart(vacancy: Vacancy) {
         val updatedVacancy = vacancy.copy(isFavorite = !vacancy.isFavorite)
         searchViewModel.updateFavouriteVacancy(updatedVacancy)
+
+        val noticeBadgeCounter = bundleOf(NOTICE_MAIN_ACT_BADGE_COUNT to true)
+        setFragmentResult(NOTICE_MAIN_ACT_BADGE_COUNT_RESULT, noticeBadgeCounter)
     }
 
     private fun correctVacancyEnding(result: Result) {
@@ -166,6 +169,9 @@ class SearchFragment : Fragment() {
         fun newInstance() = SearchFragment()
 
         const val SEARCH_FRAGMENT = "SEARCH_FRAGMENT"
+
+        const val NOTICE_MAIN_ACT_BADGE_COUNT = "NOTICE_MAIN_ACT_BADGE_COUNT"
+        const val NOTICE_MAIN_ACT_BADGE_COUNT_RESULT = "NOTICE_MAIN_ACT_BADGE_COUNT_RESULT"
 
         const val LOADED_DATA = "LOADED_DATA"
         const val LOADED_DATA_RESULT = "LOADED_DATA_RESULT"

@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         observeViewModel()
         listenerForLoadedData()
+        listenerForBadgeCounterNotation()
         listenerForNavigationToAuthSecondFragment()
         listenerForNavigationToSearchFragment()
         listenerForNavigationToVacancyPageFragment()
@@ -69,6 +70,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateBadgeCount(favouriteVacancies: Int) {
         val badge = binding.bottomNavView.getOrCreateBadge(R.id.action_favourites)
+        badge.backgroundColor = getColor(ru.faimizufarov.core.R.color.red)
+        badge.badgeTextColor = getColor(R.color.white)
         val isFavouriteVacancy = favouriteVacancies > 0
         if (isFavouriteVacancy) {
             badge.number = favouriteVacancies
@@ -87,6 +90,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun listenerForBadgeCounterNotation() {
+        supportFragmentManager.setFragmentResultListener(
+            FavouriteFragment.NOTICE_MAIN_ACT_BADGE_COUNT_RESULT, this
+        ) { _, bundle ->
+            val result = bundle.getBoolean(FavouriteFragment.NOTICE_MAIN_ACT_BADGE_COUNT)
+            if (result) { mainViewModel.refreshData() }
+        }
+        // Accept data from FavouriteFragment, SearchFragment & VacancyPageFragment
     }
 
     private fun listenerForNavigationToAuthSecondFragment() {

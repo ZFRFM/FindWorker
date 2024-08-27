@@ -82,12 +82,18 @@ class FavouriteFragment : Fragment() {
     private fun updateVacancyHeart(vacancy: Vacancy) {
         val updatedVacancy = vacancy.copy(isFavorite = !vacancy.isFavorite)
         favouriteViewModel.updateFavouriteVacancy(updatedVacancy)
+
+        val noticeBadgeCounter = bundleOf(NOTICE_MAIN_ACT_BADGE_COUNT to true)
+        setFragmentResult(NOTICE_MAIN_ACT_BADGE_COUNT_RESULT, noticeBadgeCounter)
     }
 
     companion object {
         fun newInstance() = FavouriteFragment()
 
         const val FAVOURITE_FRAGMENT = "FAVOURITE_FRAGMENT"
+
+        const val NOTICE_MAIN_ACT_BADGE_COUNT = "NOTICE_MAIN_ACT_BADGE_COUNT"
+        const val NOTICE_MAIN_ACT_BADGE_COUNT_RESULT = "NOTICE_MAIN_ACT_BADGE_COUNT_RESULT"
 
         const val FAVOURITE_VACANCY_ID = "FAVOURITE_VACANCY_ID"
         const val NAV_TO_VACANCY_PAGE_FROM_FAVOURITES = "NAV_TO_VACANCY_PAGE_FROM_FAVOURITES"

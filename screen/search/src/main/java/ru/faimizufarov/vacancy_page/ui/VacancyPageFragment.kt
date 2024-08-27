@@ -12,6 +12,7 @@ import ru.faimizufarov.domain.models.Question
 import ru.faimizufarov.domain.models.Vacancy
 import ru.faimizufarov.respond.ui.RespondBottomSheetFragment
 import ru.faimizufarov.search.databinding.FragmentVacancyPageBinding
+import ru.faimizufarov.search.ui.SearchFragment
 import ru.faimizufarov.vacancy_page.adapter.QuestionAdapter
 import ru.faimizufarov.vacancy_page.di.VacancyPageComponentProvider
 import javax.inject.Inject
@@ -200,6 +201,9 @@ class VacancyPageFragment() : Fragment() {
         val updatedVacancy = vacancy.copy(isFavorite = !vacancy.isFavorite)
         vacancyPageViewModel.updateFavouriteVacancy(updatedVacancy)
         vacancyPageViewModel.filterResult(vacancyId)
+
+        val noticeBadgeCounter = bundleOf(SearchFragment.NOTICE_MAIN_ACT_BADGE_COUNT to true)
+        setFragmentResult(SearchFragment.NOTICE_MAIN_ACT_BADGE_COUNT_RESULT, noticeBadgeCounter)
     }
 
     companion object {
@@ -213,6 +217,9 @@ class VacancyPageFragment() : Fragment() {
         }
 
         const val VACANCY_ID = "VACANCY_ID"
+
+        const val NOTICE_MAIN_ACT_BADGE_COUNT = "NOTICE_MAIN_ACT_BADGE_COUNT"
+        const val NOTICE_MAIN_ACT_BADGE_COUNT_RESULT = "NOTICE_MAIN_ACT_BADGE_COUNT_RESULT"
 
         const val CALLER_FRAGMENT = "CALLER_FRAGMENT"
         const val SEARCH_FRAGMENT = "SEARCH_FRAGMENT"

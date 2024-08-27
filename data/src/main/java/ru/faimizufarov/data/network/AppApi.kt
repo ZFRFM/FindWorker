@@ -8,10 +8,12 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 
 private const val BASE_URL = "https://drive.usercontent.google.com/"
 
+private val json = Json { ignoreUnknownKeys = true }
+
 private val retrofit =
     Retrofit.Builder()
         .addConverterFactory(
-            Json.asConverterFactory("application/json".toMediaType()),
+            json.asConverterFactory("application/json".toMediaType()),
         )
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .baseUrl(BASE_URL)

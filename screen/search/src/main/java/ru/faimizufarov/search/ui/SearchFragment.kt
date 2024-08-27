@@ -150,6 +150,8 @@ class SearchFragment : Fragment() {
     companion object {
         fun newInstance() = SearchFragment()
 
+        const val SEARCH_FRAGMENT = "SEARCH_FRAGMENT"
+
         const val NAVIGATE_TO_VACANCY_PAGE_FRAGMENT = "NAVIGATE_TO_VACANCY_PAGE_FRAGMENT"
         const val VACANCY_ID = "VACANCY_ID"
         const val VACANCY_ID_AND_NAVIGATE_RESULT = "VACANCY_ID_AND_NAVIGATE_RESULT"

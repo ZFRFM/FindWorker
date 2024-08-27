@@ -69,8 +69,18 @@ class VacancyPageFragment() : Fragment() {
         }
 
         binding.arrowBackImageView.setOnClickListener {
-            val navigateToSearchFragment = bundleOf(NAVIGATE_TO_SEARCH_FRAGMENT to true)
-            setFragmentResult(NAVIGATE_TO_SEARCH_FRAGMENT_RESULT, navigateToSearchFragment)
+            when (arguments?.getString(CALLER_FRAGMENT)) {
+                SEARCH_FRAGMENT -> {
+                    val navigateToSearchFragment =
+                        bundleOf(NAVIGATE_TO_SEARCH_FRAGMENT to true)
+                    setFragmentResult(NAVIGATE_TO_SEARCH_FRAGMENT_RESULT, navigateToSearchFragment)
+                }
+                FAVOURITE_FRAGMENT -> {
+                    val navigateToFavouriteFragment =
+                        bundleOf(NAVIGATE_TO_FAVOURITE_FRAGMENT to true)
+                    setFragmentResult(NAVIGATE_TO_FAVOURITE_FRAGMENT_RESULT, navigateToFavouriteFragment)
+                }
+            }
         }
     }
 
@@ -186,15 +196,20 @@ class VacancyPageFragment() : Fragment() {
     }
 
     companion object {
-        fun newInstance(id: String): VacancyPageFragment {
+        fun newInstance(id: String, callerFragment: String): VacancyPageFragment {
             val args = Bundle()
             args.putString(VACANCY_ID, id)
+            args.putString(CALLER_FRAGMENT, callerFragment)
             val vacancyPageFragment = VacancyPageFragment()
             vacancyPageFragment.arguments = args
             return vacancyPageFragment
         }
 
-        const val VACANCY_ID = "QUESTION_ID"
+        const val VACANCY_ID = "VACANCY_ID"
+
+        const val CALLER_FRAGMENT = "CALLER_FRAGMENT"
+        const val SEARCH_FRAGMENT = "SEARCH_FRAGMENT"
+        const val FAVOURITE_FRAGMENT = "FAVOURITE_FRAGMENT"
 
         const val QUESTION_TEXT = "QUESTION_TEXT"
         const val NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION = "NAVIGATE_TO_RESPOND_BOTTOM_SHEET_WITH_QUESTION"
@@ -205,5 +220,8 @@ class VacancyPageFragment() : Fragment() {
 
         const val NAVIGATE_TO_SEARCH_FRAGMENT = "NAVIGATE_TO_SEARCH_FRAGMENT_FROM_VACANCY_PAGE"
         const val NAVIGATE_TO_SEARCH_FRAGMENT_RESULT = "NAVIGATE_TO_SEARCH_FRAGMENT_RESULT_FROM_VACANCY_PAGE"
+
+        const val NAVIGATE_TO_FAVOURITE_FRAGMENT = "NAVIGATE_TO_FAVOURITE_FRAGMENT"
+        const val NAVIGATE_TO_FAVOURITE_FRAGMENT_RESULT = "NAVIGATE_TO_FAVOURITE_FRAGMENT_RESULT"
     }
 }

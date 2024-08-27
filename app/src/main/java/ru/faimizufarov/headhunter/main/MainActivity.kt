@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         listenerForNavigationToVacancyPageFragment()
         listenerForNavigationToBottomSheetFragmentWithRespond()
         listenerForNavigationToBottomSheetFragmentWithQuestion()
+        listenerForNavigationToFavouriteFragment()
     }
 
     private fun observeBottomNavViewAvailability() {
@@ -93,7 +94,10 @@ class MainActivity : AppCompatActivity() {
                 ?: error("vacancyId was not accepted")
             val result = bundle.getBoolean(SearchFragment.NAVIGATE_TO_VACANCY_PAGE_FRAGMENT)
             if (result) {
-                setCurrentFragment(VacancyPageFragment.newInstance(vacancyId))
+                setCurrentFragment(VacancyPageFragment.newInstance(
+                    vacancyId,
+                    SearchFragment.SEARCH_FRAGMENT
+                ))
             }
         }
 
@@ -104,7 +108,10 @@ class MainActivity : AppCompatActivity() {
                 ?: error("vacancyId was not accepted")
             val result = bundle.getBoolean(FavouriteFragment.NAV_TO_VACANCY_PAGE_FROM_FAVOURITES)
             if (result) {
-                setCurrentFragment(VacancyPageFragment.newInstance(vacancyId))
+                setCurrentFragment(VacancyPageFragment.newInstance(
+                    vacancyId,
+                    FavouriteFragment.FAVOURITE_FRAGMENT
+                ))
             }
         }
     }
@@ -132,6 +139,17 @@ class MainActivity : AppCompatActivity() {
             if (result) {
                 val bottomSheet = RespondBottomSheetFragment.newInstance(questionText)
                 bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+            }
+        }
+    }
+
+    private fun listenerForNavigationToFavouriteFragment() {
+        supportFragmentManager.setFragmentResultListener(
+            VacancyPageFragment.NAVIGATE_TO_FAVOURITE_FRAGMENT_RESULT, this
+        ) { _, bundle ->
+            val result = bundle.getBoolean(VacancyPageFragment.NAVIGATE_TO_FAVOURITE_FRAGMENT)
+            if (result) {
+                setCurrentFragment(FavouriteFragment.newInstance())
             }
         }
     }

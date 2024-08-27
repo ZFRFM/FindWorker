@@ -78,6 +78,8 @@ class FavouriteFragment : Fragment() {
     companion object {
         fun newInstance() = FavouriteFragment()
 
+        const val FAVOURITE_FRAGMENT = "FAVOURITE_FRAGMENT"
+
         const val FAVOURITE_VACANCY_ID = "FAVOURITE_VACANCY_ID"
         const val NAV_TO_VACANCY_PAGE_FROM_FAVOURITES = "NAV_TO_VACANCY_PAGE_FROM_FAVOURITES"
         const val NAV_TO_VACANCY_PAGE_FROM_FAVOURITES_RESULT = "NAV_TO_VACANCY_PAGE_FROM_FAVOURITES_RESULT"

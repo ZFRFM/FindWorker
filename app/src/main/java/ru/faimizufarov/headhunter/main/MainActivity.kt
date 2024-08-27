@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import ru.faimizufarov.auth.AuthFirstFragment
 import ru.faimizufarov.auth.AuthSecondFragment
-import ru.faimizufarov.favourites.FavouritesFragment
+import ru.faimizufarov.favourites.ui.FavouritesFragment
 import ru.faimizufarov.headhunter.R
 import ru.faimizufarov.headhunter.databinding.ActivityMainBinding
 import ru.faimizufarov.messages.MessagesFragment

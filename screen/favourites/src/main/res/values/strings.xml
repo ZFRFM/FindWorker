@@ -1,3 +1,5 @@
 <resources>
     <string name="favourites_fragment">Favourite Fragment</string>
+    <string name="favourite">Избранное</string>
+    <string name="vacancy_number">Х вакансий</string>
 </resources>

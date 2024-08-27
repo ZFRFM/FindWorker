@@ -11,4 +11,6 @@ interface ResultRepository {
     suspend fun requestFavouriteVacancies(): List<Vacancy>
 
     suspend fun setBadgeCounterValue(): Int
+
+    suspend fun updateVacancy(vacancy: Vacancy)
 }

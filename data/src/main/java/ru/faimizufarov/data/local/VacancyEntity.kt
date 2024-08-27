@@ -9,8 +9,7 @@ import ru.faimizufarov.domain.models.Salary
 
 @Entity(tableName = "vacancy")
 data class VacancyEntity(
-    @PrimaryKey(autoGenerate = true) val localId: Int = 0,
-    @ColumnInfo("id") val id: String,
+    @PrimaryKey val id: String,
     @ColumnInfo("looking_number") val lookingNumber: Int?,
     @ColumnInfo("title") val title: String,
     @ColumnInfo("address") val address: Address,

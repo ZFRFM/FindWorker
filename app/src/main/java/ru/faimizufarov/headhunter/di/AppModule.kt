@@ -6,6 +6,7 @@ import dagger.Provides
 import ru.faimizufarov.domain.usecase.GetFavouritesUseCase
 import ru.faimizufarov.domain.usecase.GetResultUseCase
 import ru.faimizufarov.domain.usecase.GetVacancyUseCase
+import ru.faimizufarov.domain.usecase.UpdateFavouriteVacancyUseCase
 import ru.faimizufarov.favourite.ui.FavouriteViewModelFactory
 import ru.faimizufarov.search.ui.SearchViewModelFactory
 import ru.faimizufarov.vacancy_page.ui.VacancyPageViewModelFactory
@@ -19,9 +20,11 @@ class AppModule(val context: Context) {
 
     @Provides
     fun provideSearchViewModelFactory(
-        getResultUseCase: GetResultUseCase
+        getResultUseCase: GetResultUseCase,
+        updateFavouriteVacancyUseCase: UpdateFavouriteVacancyUseCase
     ) = SearchViewModelFactory(
-        getResultUseCase = getResultUseCase
+        getResultUseCase = getResultUseCase,
+        updateFavouriteVacancyUseCase = updateFavouriteVacancyUseCase
     )
 
     @Provides

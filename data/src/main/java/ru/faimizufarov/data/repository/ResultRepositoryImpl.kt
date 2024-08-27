@@ -62,17 +62,20 @@ class ResultRepositoryImpl(
         return requestFavouriteVacancies().size
     }
 
+    override suspend fun updateVacancy(vacancy: Vacancy) {
+        database.vacancyDao().updateVacancy(vacancy.toVacancyEntity())
+    }
+
+
     private fun Offer.toOfferEntity() = OfferEntity(
-        localId = 0,
-        id, title, button, link
+        localId?: 0, id, title, button, link
     )
 
     private fun OfferEntity.toOffer() = Offer(
-        id, title, button, link
+        localId, id, title, button, link
     )
 
     private fun Vacancy.toVacancyEntity() = VacancyEntity(
-        localId = 0,
         id, lookingNumber, title, address, company, experience,
         publishedDate, isFavorite, salary, schedules, appliedNumber,
         description, responsibilities, questions

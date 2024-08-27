@@ -1,4 +1,4 @@
-package ru.faimizufarov.search.adapter
+package ru.faimizufarov.core.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

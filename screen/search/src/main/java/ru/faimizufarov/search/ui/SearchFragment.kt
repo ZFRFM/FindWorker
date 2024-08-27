@@ -16,7 +16,7 @@ import ru.faimizufarov.domain.models.Offer
 import ru.faimizufarov.domain.models.Result
 import ru.faimizufarov.domain.models.Vacancy
 import ru.faimizufarov.search.adapter.OfferAdapter
-import ru.faimizufarov.search.adapter.VacancyAdapter
+import ru.faimizufarov.core.adapters.VacancyAdapter
 import ru.faimizufarov.search.databinding.FragmentSearchBinding
 import ru.faimizufarov.search.di.SearchComponentProvider
 import javax.inject.Inject

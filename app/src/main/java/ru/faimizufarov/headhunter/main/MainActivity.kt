@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import ru.faimizufarov.auth.AuthFirstFragment
 import ru.faimizufarov.auth.AuthSecondFragment
-import ru.faimizufarov.favourites.ui.FavouritesFragment
+import ru.faimizufarov.favourites.ui.FavouriteFragment
 import ru.faimizufarov.headhunter.R
 import ru.faimizufarov.headhunter.databinding.ActivityMainBinding
 import ru.faimizufarov.messages.MessagesFragment
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.action_search -> setCurrentFragment(SearchFragment.newInstance())
-                R.id.action_favourites -> setCurrentFragment(FavouritesFragment.newInstance())
+                R.id.action_favourites -> setCurrentFragment(FavouriteFragment.newInstance())
                 R.id.action_responses -> setCurrentFragment(ResponsesFragment.newInstance())
                 R.id.action_messages -> setCurrentFragment(MessagesFragment.newInstance())
                 R.id.action_profile -> setCurrentFragment(ProfileFragment.newInstance())

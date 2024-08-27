@@ -23,6 +23,14 @@ class ResultRepositoryImpl(
         return vacancy
     }
 
+    override suspend fun requestFavouriteVacancies(): List<Vacancy> {
+        val result = AppApi.retrofitService.getResult()
+        val favouriteVacanciesList = result.vacancies.filter { vacancy ->
+            vacancy.isFavorite == true
+        }
+        return favouriteVacanciesList
+    }
+
     override suspend fun setBadgeCounterEmitValue(emitValue: Int) {
         TODO("Not yet implemented")
     }

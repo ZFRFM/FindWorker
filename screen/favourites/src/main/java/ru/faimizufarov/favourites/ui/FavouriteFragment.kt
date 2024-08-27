@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import ru.faimizufarov.favourites.databinding.FragmentFavouritesBinding
 
-class FavouritesFragment : Fragment() {
+class FavouriteFragment : Fragment() {
     private lateinit var binding: FragmentFavouritesBinding
 
     override fun onCreateView(
@@ -24,6 +24,6 @@ class FavouritesFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = FavouritesFragment()
+        fun newInstance() = FavouriteFragment()
     }
 }

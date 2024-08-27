@@ -8,5 +8,7 @@ interface ResultRepository {
 
     suspend fun requestVacancy(id: String): Vacancy
 
+    suspend fun requestFavouriteVacancies(): List<Vacancy>
+
     suspend fun setBadgeCounterEmitValue(emitValue: Int)
 }

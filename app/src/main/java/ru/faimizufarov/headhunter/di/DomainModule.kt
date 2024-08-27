@@ -3,6 +3,7 @@ package ru.faimizufarov.headhunter.di
 import dagger.Module
 import dagger.Provides
 import ru.faimizufarov.domain.repository.ResultRepository
+import ru.faimizufarov.domain.usecase.GetFavouritesUseCase
 import ru.faimizufarov.domain.usecase.GetResultUseCase
 import ru.faimizufarov.domain.usecase.GetVacancyUseCase
 
@@ -15,4 +16,8 @@ class DomainModule {
     @Provides
     fun provideGetVacancyUseCase(resultRepository: ResultRepository) =
         GetVacancyUseCase(resultRepository)
+
+    @Provides
+    fun provideGetFavouritesUseCase(resultRepository: ResultRepository) =
+        GetFavouritesUseCase(resultRepository)
 }

@@ -1,4 +1,4 @@
-package ru.faimizufarov.data.local
+package ru.faimizufarov.local
 
 import android.content.Context
 import androidx.room.Database

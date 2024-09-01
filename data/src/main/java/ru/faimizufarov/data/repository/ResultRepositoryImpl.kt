@@ -1,9 +1,9 @@
 package ru.faimizufarov.data.repository
 
 import android.content.Context
-import ru.faimizufarov.data.local.AppDatabase
-import ru.faimizufarov.data.local.OfferEntity
-import ru.faimizufarov.data.local.VacancyEntity
+import ru.faimizufarov.local.AppDatabase
+import ru.faimizufarov.local.OfferEntity
+import ru.faimizufarov.local.VacancyEntity
 import ru.faimizufarov.network.AppApi
 import ru.faimizufarov.domain.models.Offer
 import ru.faimizufarov.domain.repository.ResultRepository

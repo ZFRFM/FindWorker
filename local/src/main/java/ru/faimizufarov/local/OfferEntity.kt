@@ -1,4 +1,4 @@
-package ru.faimizufarov.data.local
+package ru.faimizufarov.local
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -1,4 +1,4 @@
-package ru.faimizufarov.data.local
+package ru.faimizufarov.local
 
 import androidx.room.TypeConverter
 import ru.faimizufarov.domain.models.Address

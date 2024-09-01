@@ -4,7 +4,7 @@ import android.content.Context
 import ru.faimizufarov.data.local.AppDatabase
 import ru.faimizufarov.data.local.OfferEntity
 import ru.faimizufarov.data.local.VacancyEntity
-import ru.faimizufarov.data.network.AppApi
+import ru.faimizufarov.network.AppApi
 import ru.faimizufarov.domain.models.Offer
 import ru.faimizufarov.domain.repository.ResultRepository
 import ru.faimizufarov.domain.models.Result

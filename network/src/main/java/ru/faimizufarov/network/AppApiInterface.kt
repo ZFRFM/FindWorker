@@ -1,4 +1,4 @@
-package ru.faimizufarov.data.network
+package ru.faimizufarov.network
 
 import retrofit2.http.GET
 import ru.faimizufarov.domain.models.Result

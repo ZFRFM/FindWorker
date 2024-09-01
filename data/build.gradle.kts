@@ -31,6 +31,7 @@ android {
 
 dependencies {
     implementation(project(path = ":domain"))
+    implementation(project(path = ":network"))
 
     //region Kotlin Serialization
     implementation(libs.kotlinx.serialization.json)

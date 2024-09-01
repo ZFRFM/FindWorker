@@ -28,10 +28,28 @@ android {
 }
 
 dependencies {
+    implementation(project(path = ":domain"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+
+    //region Kotlin Serialization
+    implementation(libs.kotlinx.serialization.json)
+    //endregion
+
+    //region Retrofit
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.adapter.rxjava3)
+    implementation(libs.retrofit)
+    implementation(libs.okhttp)
+    //endregion
+
+    //region Coroutine
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
+    //endregion
+    
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

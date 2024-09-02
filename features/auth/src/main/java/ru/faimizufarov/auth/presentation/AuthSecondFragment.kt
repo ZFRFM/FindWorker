@@ -1,4 +1,4 @@
-package ru.faimizufarov.auth
+package ru.faimizufarov.auth.presentation
 
 import android.os.Bundle
 import android.text.Editable
@@ -8,13 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
-import com.jakewharton.rxbinding4.widget.textChanges
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import ru.faimizufarov.authorization.R
-import ru.faimizufarov.authorization.databinding.FragmentAuthSecondBinding
+import ru.faimizufarov.auth.R
+import ru.faimizufarov.auth.databinding.FragmentAuthSecondBinding
 
 class AuthSecondFragment : Fragment() {
     private lateinit var binding: FragmentAuthSecondBinding

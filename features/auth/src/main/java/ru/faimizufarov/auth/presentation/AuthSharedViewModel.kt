@@ -1,4 +1,4 @@
-package ru.faimizufarov.auth
+package ru.faimizufarov.auth.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData

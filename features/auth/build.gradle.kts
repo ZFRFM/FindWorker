@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.faimizufarov.authorization"
+    namespace = "ru.faimizufarov.auth"
     compileSdk = 34
 
     defaultConfig {

@@ -1,4 +1,4 @@
-package ru.faimizufarov.auth
+package ru.faimizufarov.auth.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -16,8 +16,8 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import com.jakewharton.rxbinding4.widget.textChanges
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import ru.faimizufarov.authorization.R
-import ru.faimizufarov.authorization.databinding.FragmentAuthFirstBinding
+import ru.faimizufarov.auth.R
+import ru.faimizufarov.auth.databinding.FragmentAuthFirstBinding
 
 class AuthFirstFragment : Fragment() {
     private lateinit var binding: FragmentAuthFirstBinding

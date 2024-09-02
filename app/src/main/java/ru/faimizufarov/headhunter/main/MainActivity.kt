@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import ru.faimizufarov.auth.AuthFirstFragment
-import ru.faimizufarov.auth.AuthSecondFragment
+import ru.faimizufarov.auth.presentation.AuthFirstFragment
+import ru.faimizufarov.auth.presentation.AuthSecondFragment
 import ru.faimizufarov.favourite.ui.FavouriteFragment
 import ru.faimizufarov.headhunter.App
 import ru.faimizufarov.headhunter.R

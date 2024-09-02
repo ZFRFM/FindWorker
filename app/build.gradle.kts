@@ -41,10 +41,10 @@ android {
 
 dependencies {
     implementation(project(path = ":features:auth"))
+    implementation(project(path = ":features:messages"))
     implementation(project(path = ":screen:search"))
     implementation(project(path = ":screen:favourites"))
     implementation(project(path = ":screen:responses"))
-    implementation(project(path = ":screen:messages"))
     implementation(project(path = ":screen:profile"))
     implementation(project(path = ":core"))
     implementation(project(path = ":data"))

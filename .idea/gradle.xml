@@ -16,12 +16,12 @@
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/auth" />
             <option value="$PROJECT_DIR$/features/messages" />
+            <option value="$PROJECT_DIR$/features/profile" />
             <option value="$PROJECT_DIR$/features/responses" />
             <option value="$PROJECT_DIR$/local" />
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/screen" />
             <option value="$PROJECT_DIR$/screen/favourites" />
-            <option value="$PROJECT_DIR$/screen/profile" />
             <option value="$PROJECT_DIR$/screen/search" />
           </set>
         </option>
